@@ -1,7 +1,7 @@
-import { Navbar } from 'react-bootstrap';
+import { Navbar, NavItem } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
-import { NavDropdown } from 'react-bootstrap';
+import { CartItem } from './CartItem';
 
 export const NavBar = () => {
 
@@ -17,6 +17,7 @@ export const NavBar = () => {
                         <Nav.Link href="#">Catalogo</Nav.Link>
                         <Nav.Link href="#">Contacto</Nav.Link>
                         <Nav.Link href="#">Nosotros</Nav.Link>
+                        <Nav.Link className='d-flex align-items-center'><CartItem/></Nav.Link> 
                     </Nav>
                 </Navbar.Collapse>
             </Container>
