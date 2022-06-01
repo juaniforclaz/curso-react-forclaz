@@ -1,8 +1,6 @@
 import { Button } from "react-bootstrap"
 
 export const Card = (props) => {
-    
-    console.log(props)
 
     return (
 
