@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavBar } from './Components/NavBar';
-import { Hero } from './Components/Hero';
-import { Card } from './Components/Card/Card';
-import { Counter } from './Components/Counter/Counter'
-import { Counter2 } from './Components/Counter2/Counter2'
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Nosotros } from './Components/Nosotros/Nosotros';
+import { Contacto } from './Components/Contacto/Contacto';
+import { Catalogo } from './Components/Catalogo/Catalogo';
+import { Inicio } from './Components/Inicio/Inicio';
 import { ItemListContainer } from './Components/ItemListContainer/ItemListContainer';
-import { ItemCard } from './Components/ItemCard/ItemCard'
+import { ItemDetailContainer } from './Components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
 
@@ -17,38 +18,22 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <BrowserRouter>
+
       <NavBar />
-      <Hero />
-      <div className='row mb-5'>
-        <div className='col'>
-          <Card title='Carteras' subtitle='Categoria 1' button='Ver mas' />
-        </div>
-        <div className='col'>
-          <Card title='Riñoneras' subtitle='Categoria 2' button='Ver mas' />
-        </div>
-        <div className='col'>
-          <Card title='Bolsos' subtitle='Categoria 3' button='Ver mas' />
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col rounded'>
-          <h3 className='mb-3'>Catalogo</h3>
-          <ItemListContainer/>
-        </div>
-      </div>
-      <div className='row mb-5'>
-        <div className='col'>
-          <Counter />
-        </div>
-        <div className='col'>
-          <Counter2 />
-        </div>
-      </div>
-      <div className='row mb-5'>
-        <button className='btn btn-danger' onClick={mostrarCounter}>Mostrar/Ocultar</button>
-      </div>
-    </div >
+
+      <Routes>
+
+        <Route path='/' element={<Inicio />} />
+        <Route path='/catalogo' element={<Catalogo />} />
+        <Route path='/nosotros' element={<Nosotros />} />
+        <Route path='/contacto' element={<Contacto />} />
+        <Route path='/item/:itemId' element={<ItemDetailContainer />} />
+
+      </Routes>
+
+
+    </BrowserRouter >
   )
 }
 
