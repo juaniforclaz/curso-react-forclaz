@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
-import { Spinner } from "react-bootstrap"
+import { Container, Row, Col, ProgressBar } from "react-bootstrap"
 import { pedirDatos } from "../../Mock/PedirDatos"
 import { useParams } from "react-router-dom"
+import { ItemLoading } from "../ItemLoading/ItemLoading"
 
 
 export const ItemListContainer = () => {
@@ -11,11 +12,7 @@ export const ItemListContainer = () => {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
 
-
-    // const params = useParams()
     const { categoryId } = useParams()
-    console.log(categoryId)
-
 
     useEffect(() => {
         setLoading(true)
@@ -37,17 +34,34 @@ export const ItemListContainer = () => {
     }, [categoryId])
 
     return (
-        <section className="container my-5">
+        <section className="container">
 
             {
                 loading
-                    ? <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
+                    ?
+                    <Container>
+                        <Row>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                        </Row>
+
+                        <ProgressBar animated now={50} />
+
+                    </Container>
 
                     : <ItemList items={items} />
             }
 
-        </section>
+        </section >
     )
 }

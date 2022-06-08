@@ -13,12 +13,12 @@ export const ItemDetail = ({ item }) => {
     }
 
     return (
-        <Container className="bg-light p-2 rounded mx-auto">
-            <Row>
-                <Col>
-                    <Card.Img src={item.img}></Card.Img>
+        <Container className="">
+            <Row className="mx-auto">
+                <Col className="bg-light p-2" xs lg="4">
+                    <Card.Img src={item.img} className="img-itemdetail"></Card.Img>
                 </Col>
-                <Col xs lg="4">
+                <Col className="bg-light p-2" xs lg="8">
                     <Card className="mb-3">
                         <Card.Body>
                             <Card.Title>{item.title}</Card.Title>

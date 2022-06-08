@@ -1,12 +1,11 @@
 import { Container } from "react-bootstrap"
-import { Hero } from "../Hero"
+import { Hero } from "../Hero/Hero"
 
 export const Inicio = () => {
     return (
 
         <Container>
             <Hero />
-
             {/*             <div className='row mb-5'>
                 <div className='col'>
                     <Card title='Carteras' subtitle='Categoria 1' button='Ver mas' />

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 export const Item = ({ item }) => {
     return (
-        <Card className="mx-auto mb-3" style={{ width: '18rem' }}>
+        <Card className="mx-auto mb-3 card-item">
             <Card.Body className="col">
-                <Card.Img src={item.img} className="mb-3"></Card.Img>
+                <Card.Img src={item.img} className="mb-3 img-item"></Card.Img>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.price}</Card.Text>
                 <ItemCount stock={5} initial={1} />
