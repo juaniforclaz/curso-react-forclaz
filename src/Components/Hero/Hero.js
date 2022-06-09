@@ -1,4 +1,4 @@
-import { Button, Carousel, Container } from 'react-bootstrap';
+import { Carousel, Container } from 'react-bootstrap';
 import Imagenes from '../../Img/Imagenes';
 
 export const Hero = () => {

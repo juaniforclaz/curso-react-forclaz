@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
-import { Container, Row, Col, ProgressBar } from "react-bootstrap"
+import { Container, Row, Col, ProgressBar, ListGroup } from "react-bootstrap"
 import { pedirDatos } from "../../Mock/PedirDatos"
 import { useParams } from "react-router-dom"
 import { ItemLoading } from "../ItemLoading/ItemLoading"
+import { NavCatalogo } from "../NavCatalogo/NavCatalogo"
 
 
 export const ItemListContainer = () => {
@@ -34,13 +35,14 @@ export const ItemListContainer = () => {
     }, [categoryId])
 
     return (
-        <section className="container">
+        <section>
 
             {
                 loading
                     ?
-                    <Container>
-                        <Row>
+                    <Container className="vh-100">
+
+                        <Row className="mt-3">
                             <Col className="mb-3">
                                 <ItemLoading />
                             </Col>
@@ -55,7 +57,20 @@ export const ItemListContainer = () => {
                             </Col>
                         </Row>
 
-                        <ProgressBar animated now={50} />
+                        <Row>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+                        </Row>
 
                     </Container>
 

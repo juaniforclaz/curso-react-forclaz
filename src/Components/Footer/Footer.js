@@ -6,11 +6,11 @@ import Items from '../Items/Items';
 export const Footer = () => {
     return (
 
-        <Container className='mt-5 text-center py-5' fixed="bottom">
+        <div className='mt-5 text-center py-5 bg-light container-fluid' fixed="bottom">
             <Row>
                 <h3>Footer</h3>
             </Row>
-        </Container>
+        </div>
 
     )
 }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
-import { PageItem, Spinner } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
+import { ItemLoading } from "../ItemLoading/ItemLoading"
 import { pedirDatos } from "../../Mock/PedirDatos"
 import { useParams } from "react-router-dom"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
@@ -12,8 +13,6 @@ export const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
 
     const { itemId } = useParams()
-    console.log(itemId)
-    console.log(item)
 
     useEffect(() => {
         setLoading(true)
@@ -31,13 +30,19 @@ export const ItemDetailContainer = () => {
     }, [])
 
     return (
-        <section className="container my-5">
+        <section className="container my-5 vh-100">
 
             {
                 loading
-                    ? <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
+                    ?
+                    <Container className="vh-100">
+                        <Row className="mt-3">
+                            <Col className="mb-3">
+                                <ItemLoading />
+                            </Col>
+
+                        </Row>
+                    </Container>
 
                     : <ItemDetail item={item} />
             }

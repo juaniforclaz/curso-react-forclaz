@@ -10,7 +10,6 @@ export const Item = ({ item }) => {
                 <Card.Img src={item.img} className="mb-3 img-item"></Card.Img>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>{item.price}</Card.Text>
-                <ItemCount stock={5} initial={1} />
                 <Link to={`/item/${item.id}`}>
                     <Button variant="success">Ver más</Button>
                 </Link>
