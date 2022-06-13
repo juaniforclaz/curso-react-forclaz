@@ -1,4 +1,4 @@
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Imagenes from '../../Img/Imagenes';
 import Items from '../Items/Items';
@@ -16,9 +16,7 @@ export const NavBar = () => {
                     <Link to={'/catalogo'} className="nav-link d-flex align-items-center mx-3">{Items.catalogo}</Link>
                     <Link to={'/nosotros'} className="nav-link d-flex align-items-center mx-3">{Items.nosotros}</Link>
                     <Link to={'/contacto'} className="nav-link d-flex align-items-center mx-3">{Items.contacto}</Link>
-                    <Nav.Link className='d-flex align-items-center mx-3'>{Items.carrito}</Nav.Link>
-                    <Nav.Link className='d-flex align-items-center mx-3'>{Items.busqueda}</Nav.Link>
-
+                    <Link to={'/cart'} className='nav-link d-flex align-items-center mx-3'>{Items.carrito}</Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar >

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col} from "react-bootstrap"
 import { ItemLoading } from "../ItemLoading/ItemLoading"
 import { pedirDatos } from "../../Mock/PedirDatos"
 import { useParams } from "react-router-dom"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+
 
 export const ItemDetailContainer = () => {
 
@@ -30,7 +31,7 @@ export const ItemDetailContainer = () => {
     }, [])
 
     return (
-        <section className="container my-5 vh-100">
+        <section className="container my-3 vh-100">
 
             {
                 loading

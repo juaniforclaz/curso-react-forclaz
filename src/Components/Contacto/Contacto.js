@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap"
+import { Container, Row } from "react-bootstrap"
 import Items from "../Items/Items"
 import { useState } from "react"
 
@@ -22,16 +22,15 @@ export const Contacto = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        console.log("Submit del form")
-        console.log(values)
     }
+
     return (
         <Container>
             <h2 className="opacity-50">Contacto</h2>
             <p className="bg-light p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget augue dolor. Curabitur id velit in risus varius consectetur. Integer molestie luctus est. Mauris vestibulum metus eget nunc suscipit ullamcorper. Aliquam a leo commodo, tempor dolor vel, consectetur ipsum. Sed tristique nulla in tempus sodales. Nam non neque mauris. Sed quis sollicitudin tellus. Donec non nulla eros. Etiam quis vulputate nunc. Morbi sit amet porta libero, quis imperdiet velit. Nam metus diam, auctor non iaculis eget, semper at sem. Cras auctor diam in nisi consequat dignissim. Vestibulum at congue est.</p>
             <p className="fs-1">
                 <span>{Items.instagram}</span>
-                <span>{Items.whatsapp}</span>
+                <span className="mx-3">{Items.whatsapp}</span>
             </p>
 
             <form onSubmit={handleSubmit}>
@@ -64,6 +63,7 @@ export const Contacto = () => {
                 />
 
                 <button type="submit" className="btn btn-primary">Enviar</button>
+
             </form>
         </Container>
     )

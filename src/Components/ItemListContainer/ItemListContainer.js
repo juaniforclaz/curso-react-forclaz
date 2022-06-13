@@ -40,7 +40,7 @@ export const ItemListContainer = () => {
             {
                 loading
                     ?
-                    <Container className="vh-100">
+                    <Container className="item-list">
 
                         <Row className="mt-3">
                             <Col className="mb-3">

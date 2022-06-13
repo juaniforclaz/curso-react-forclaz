@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap"
+import { CatCardContainer } from "../CatCardContainer/CatCardContainer"
 import { Hero } from "../Hero/Hero"
 
 export const Inicio = () => {
@@ -6,17 +7,8 @@ export const Inicio = () => {
 
         <Container>
             <Hero />
-            {/*             <div className='row mb-5'>
-                <div className='col'>
-                    <Card title='Carteras' subtitle='Categoria 1' button='Ver mas' />
-                </div>
-                <div className='col'>
-                    <Card title='Riñoneras' subtitle='Categoria 2' button='Ver mas' />
-                </div>
-                <div className='col'>
-                    <Card title='Bolsos' subtitle='Categoria 3' button='Ver mas' />
-                </div>
-            </div>
+            <CatCardContainer />
+            {/*
             <div className='row mb-5'>
                 <div className='col'>
                     <Counter />

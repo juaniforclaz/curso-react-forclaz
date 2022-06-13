@@ -1,31 +1,35 @@
-import { useNavigate } from "react-router-dom"
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import { ItemCount } from "../ItemCount/ItemCount"
-import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { useState } from "react";
+import { BreadCrumb } from "../BreadCrumb/BreadCrumb"
 
 export const ItemDetail = ({ item }) => {
 
-    const [cantidad, setCantidad] = useState(1)
-
-    const navigate = useNavigate()
-
-    const handleVolver = () => {
-        navigate(-1)
-    }
+    const [cantidad, setCantidad] = useState(0)
 
     const handleAgregar = () => {
+
+        document.querySelector('.finalizar').classList.remove('d-none')
+        document.querySelector('.finalizar').textContent = 'Finalizar compra'
+        document.querySelector('.counter').classList.add('d-none')
+        document.querySelector('.btn-counter').classList.add('d-none')
+
         const itemToCart = {
             ...item,
             cantidad
         }
+
         console.log(itemToCart)
     }
 
+
     return (
         <Container className="vh-100">
+            <Row>
+                <BreadCrumb
+                    producto={item.title}
+                />
+            </Row>
             <Row className="mx-auto">
                 <Col className="bg-light p-2" xs lg="4">
                     <Card.Img src={item.img} className="img-itemdetail border border-1"></Card.Img>
@@ -43,14 +47,15 @@ export const ItemDetail = ({ item }) => {
                         max={item.stock}
                         counter={cantidad}
                         setCounter={setCantidad}
-                        handleAgregar={handleAgregar}
+                        onAdd={handleAgregar}
                     />
 
-                    <Button onClick={handleVolver} variant="dark">Volver</Button>
-
                 </Col>
+
             </Row>
+
         </Container>
     )
+
 }
 

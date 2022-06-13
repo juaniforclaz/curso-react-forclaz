@@ -4,11 +4,11 @@ import Imagenes from '../../Img/Imagenes';
 export const Hero = () => {
 
     return (
-        <Container>
+        <Container className='carousel'>
             <Carousel>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block img-carousel"
                         src={Imagenes.car1}
                         alt="First slide"
                     />
@@ -19,7 +19,7 @@ export const Hero = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block img-carousel"
                         src={Imagenes.car2}
                         alt="Second slide"
                     />
@@ -31,7 +31,7 @@ export const Hero = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                        className="d-block w-100"
+                        className="d-block img-carousel"
                         src={Imagenes.car3}
                         alt="Third slide"
                     />
