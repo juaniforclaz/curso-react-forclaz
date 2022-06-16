@@ -19,6 +19,12 @@ body {
 
 }
 
+.img-cart {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+}
+
 .card-item {
     transition: all .4s;
     width: 18rem;
@@ -39,8 +45,4 @@ body {
 .img-carousel {
     height: 85vh;
     width: 100%;
-}
-
-.item-list {
-    min-height: 100vh;
 }

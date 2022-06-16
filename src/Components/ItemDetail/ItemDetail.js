@@ -1,25 +1,28 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { ItemCount } from "../ItemCount/ItemCount"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BreadCrumb } from "../BreadCrumb/BreadCrumb"
+import { CartContext } from "../../Context/CartContext";
+import { Link } from "react-router-dom";
 
 export const ItemDetail = ({ item }) => {
+
+    const { addItem, isInCart } = useContext(CartContext)
+    console.log(isInCart(item.id))
 
     const [cantidad, setCantidad] = useState(0)
 
     const handleAgregar = () => {
 
-        document.querySelector('.finalizar').classList.remove('d-none')
-        document.querySelector('.finalizar').textContent = 'Finalizar compra'
-        document.querySelector('.counter').classList.add('d-none')
-        document.querySelector('.btn-counter').classList.add('d-none')
+        if (cantidad === 0) return
 
         const itemToCart = {
             ...item,
             cantidad
         }
 
-        console.log(itemToCart)
+        addItem(itemToCart)
+
     }
 
 
@@ -43,12 +46,18 @@ export const ItemDetail = ({ item }) => {
                         </Card.Body>
                     </Card >
 
-                    <ItemCount
-                        max={item.stock}
-                        counter={cantidad}
-                        setCounter={setCantidad}
-                        onAdd={handleAgregar}
-                    />
+                    {
+                        isInCart(item.id)
+                            ? <Link to={'/cart'} className="btn btn-outline-success mt-2">Finalizar Compra</Link>
+                            :
+                            <ItemCount
+                                max={item.stock}
+                                counter={cantidad}
+                                setCounter={setCantidad}
+                                onAdd={handleAgregar}
+                            />
+                    }
+
 
                 </Col>
 

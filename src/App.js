@@ -12,35 +12,45 @@ import { Error404 } from './Components/Error404/Error404';
 import { Footer } from './Components/Footer/Footer';
 import { LoginScreen } from './Components/LoginScreen/LoginScreen';
 import { Cart } from './Components/Cart/Cart';
+import { CartContext, CartProvider } from './Context/CartContext';
+import { useState } from 'react';
+import { RegisterScreen } from './Components/RegisterScreen/RegisterScreen';
 
 function App() {
 
-  return (
 
-    <BrowserRouter>
 
-      <NavBar />
-      
-      <Routes>
+    return (
 
-        <Route path='/' element={<Inicio />} />
-        <Route path='/catalogo' element={<Catalogo />} />
-        <Route path='/nosotros' element={<Nosotros />} />
-        <Route path='/contacto' element={<Contacto />} />
-        <Route path='/item/:itemId' element={<ItemDetailContainer />} />
-        <Route path='/categoria/:categoryId' element={<ItemListContainer />} />
-        <Route path='/error404' element={<Error404 />} />
-        <Route path='/login' element={<LoginScreen />} />
-        <Route path='/cart' element={<Cart/>} />
-        <Route path='*' element={<Navigate to={"/error404"} />} />
+      <CartProvider>
 
-      </Routes>
+        <BrowserRouter>
 
-      <Footer />
+          <NavBar />
 
-    </BrowserRouter >
+          <Routes>
 
-  )
-}
+            <Route path='/' element={<Inicio />} />
+            <Route path='/catalogo' element={<Catalogo />} />
+            <Route path='/nosotros' element={<Nosotros />} />
+            <Route path='/contacto' element={<Contacto />} />
+            <Route path='/item/:itemId' element={<ItemDetailContainer />} />
+            <Route path='/categoria/:categoryId' element={<ItemListContainer />} />
+            <Route path='/error404' element={<Error404 />} />
+            <Route path='/register' element={<RegisterScreen />} />
+            <Route path='/login' element={<LoginScreen />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='*' element={<Navigate to={"/error404"} />} />
+
+          </Routes>
+
+          <Footer />
+
+        </BrowserRouter >
+
+      </CartProvider>
+
+    )
+  }
 
 export default App;

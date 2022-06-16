@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react"
-import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
-import { Container, Row, Col, ProgressBar, ListGroup } from "react-bootstrap"
 import { pedirDatos } from "../../Mock/PedirDatos"
 import { useParams } from "react-router-dom"
-import { ItemLoading } from "../ItemLoading/ItemLoading"
-import { NavCatalogo } from "../NavCatalogo/NavCatalogo"
+import { ItemLoadingContainer } from "../ItemLoadingContainer/ItemLoadingContainer"
 
 
 export const ItemListContainer = () => {
@@ -39,40 +36,7 @@ export const ItemListContainer = () => {
 
             {
                 loading
-                    ?
-                    <Container className="item-list">
-
-                        <Row className="mt-3">
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                        </Row>
-
-                        <Row>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-                        </Row>
-
-                    </Container>
+                    ? <ItemLoadingContainer/>
 
                     : <ItemList items={items} />
             }

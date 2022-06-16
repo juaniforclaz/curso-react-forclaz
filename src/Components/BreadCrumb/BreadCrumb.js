@@ -13,9 +13,10 @@ export const BreadCrumb = (props) => {
 
     return (
         <Breadcrumb>
-        
+
             <Breadcrumb.Item onClick={handleVolver1}>Volver</Breadcrumb.Item>
-            <Breadcrumb.Item active>{props.producto}</Breadcrumb.Item>
+            <Breadcrumb.Item onClick={handleVolver1}>{props.producto}</Breadcrumb.Item>
+            <Breadcrumb.Item active>{props.producto2}</Breadcrumb.Item>
 
         </Breadcrumb>
     )
