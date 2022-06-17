@@ -7,13 +7,19 @@ const mockUsers = [
 
 export const AuthContext = createContext()
 
-export const AuthContextProvider = ({ children }) => {
+export const useAuthContext = () => {
+    return useContext(AuthContext)
+}
+
+export const AuthProvider = ({ children }) => {
 
 
     const [auth, setAuth] = useState({
         loggedIn: false,
         userId: null
     })
+
+    console.log(auth)
 
     const login = (values) => {
         const { email, password } = values
@@ -33,11 +39,14 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const logout = () => {
-
+        setAuth({
+            loggedIn: false,
+            userId: null
+        })
     }
 
     return (
-        <AuthContext.Provider value={{ auth }}>
+        <AuthContext.Provider value={{ auth, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

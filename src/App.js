@@ -15,42 +15,26 @@ import { Cart } from './Components/Cart/Cart';
 import { CartContext, CartProvider } from './Context/CartContext';
 import { useState } from 'react';
 import { RegisterScreen } from './Components/RegisterScreen/RegisterScreen';
+import { AuthProvider } from './Context/AuthContext';
+import { AppRouter } from './Routes/AppRouter';
 
 function App() {
 
 
 
-    return (
+  return (
+
+    <AuthProvider>
 
       <CartProvider>
 
-        <BrowserRouter>
-
-          <NavBar />
-
-          <Routes>
-
-            <Route path='/' element={<Inicio />} />
-            <Route path='/catalogo' element={<Catalogo />} />
-            <Route path='/nosotros' element={<Nosotros />} />
-            <Route path='/contacto' element={<Contacto />} />
-            <Route path='/item/:itemId' element={<ItemDetailContainer />} />
-            <Route path='/categoria/:categoryId' element={<ItemListContainer />} />
-            <Route path='/error404' element={<Error404 />} />
-            <Route path='/register' element={<RegisterScreen />} />
-            <Route path='/login' element={<LoginScreen />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='*' element={<Navigate to={"/error404"} />} />
-
-          </Routes>
-
-          <Footer />
-
-        </BrowserRouter >
+        <AppRouter />
 
       </CartProvider>
 
-    )
-  }
+    </AuthProvider>
+
+  )
+}
 
 export default App;
