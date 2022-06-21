@@ -1,14 +1,17 @@
 import { Container } from "react-bootstrap"
 import { CatCardContainer } from "../CatCardContainer/CatCardContainer"
 import { Hero } from "../Hero/Hero"
+import { NewItemsContainer } from "../NewItemsContainer/NewItemsContainer"
 
 export const Inicio = () => {
     return (
 
-        <Container>
+        <>
             <Hero />
-            <CatCardContainer />
-            {/*
+
+            <Container>
+                <CatCardContainer />
+                {/*
             <div className='row mb-5'>
                 <div className='col'>
                     <Counter />
@@ -20,6 +23,9 @@ export const Inicio = () => {
             <div className='row mb-5'>
                 <button className='btn btn-danger' onClick={mostrarCounter}>Mostrar/Ocultar</button>
             </div> */}
-        </Container>
+                <NewItemsContainer />
+            </Container>
+
+        </>
     )
 }

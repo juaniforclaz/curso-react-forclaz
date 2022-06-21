@@ -35,6 +35,7 @@ export const ItemList = ({ items }) => {
 
                 {
                     items.filter((item) => {
+
                         if (searchTerm == '') {
                             return item
                         } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
@@ -50,6 +51,7 @@ export const ItemList = ({ items }) => {
                 <h4 className="search text-center mt-2 text-danger"></h4>
 
             </Row>
+
         </Container>
     )
 

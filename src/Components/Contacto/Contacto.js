@@ -33,7 +33,7 @@ export const Contacto = () => {
                 <span className="mx-3">{Items.whatsapp}</span>
             </p>
 
-            <form onSubmit={handleSubmit}>
+            <form className="bg-light p-5" onSubmit={handleSubmit}>
                 <h4>Datos personales</h4>
                 <input
                     name="nombre"

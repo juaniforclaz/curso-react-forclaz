@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { Button, Col, Container, Row, Table } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import { CartContext } from "../../Context/CartContext"
 import Items from "../Items/Items"
 
@@ -8,7 +9,10 @@ export const Cart = () => {
     const { cart, totalPrice, vaciarCarrito, eliminarProd } = useContext(CartContext)
 
     if (cart.length === 0) {
-        return <h4 className="vh-100 px-5">El carrito esta vacio</h4>
+        return (
+            <div className="vh-100 px-5 d-flex flex-column align-items-start">El carrito esta vacio
+                <Link to={"/catalogo"}> <button className="btn btn-outline-success m-2">Ir al catalogo</button></Link></div>
+        )
     }
 
     return (

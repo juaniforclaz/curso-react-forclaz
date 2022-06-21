@@ -1,0 +1,50 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body {
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    background-color: #f8f9fa;
+}
+
+.img-item {
+    height: 18rem;
+    object-fit: cover;
+}
+
+.img-itemdetail {
+    object-fit: cover;
+}
+
+.img-cat-card {
+    height: 13rem;
+    width: 100%;
+    object-fit: cover;
+    transition: all 2s;
+
+}
+
+.img-cart {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+}
+
+.card-item {
+    transition: all .4s;
+    width: 18rem;
+}
+
+.logo {
+    height: 3rem;
+}
+
+.carousel {
+    height: 85vh;
+}
+
+.img-carousel {
+    height: 85vh;
+    width: 100%;
+}

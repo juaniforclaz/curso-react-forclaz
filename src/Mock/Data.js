@@ -107,7 +107,7 @@ const productos = [
         categoria: "riñonera",
         stock: 3,
         img: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/271/738/products/1a74373c-c5bc-4f8a-92fa-34b6ce3842731-9c8dbbdb57f1af87a715949438421103-480-0.jpeg',
-        nuevo: false,
+        nuevo: true,
     },
     {
         id: 12,
@@ -157,7 +157,7 @@ const productos = [
         categoria: "riñonera",
         stock: 3,
         img: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/271/738/products/afb35bdb-99fb-41ef-a41b-eef22ba11712-6bd1bfb43da0fae42616359975317428-480-0.jpeg',
-        nuevo: false,
+        nuevo: true,
     },
     {
         id: 17,

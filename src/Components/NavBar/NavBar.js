@@ -8,7 +8,7 @@ export const NavBar = () => {
 
     return (
 
-        <Navbar expand='lg' className='m-2'>
+        <Navbar expand='lg' className='mx-3 my-0 py-2'>
             <Navbar.Brand><Link to={'/'}><img src={Imagenes.logo} className="logo"></img></Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

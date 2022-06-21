@@ -26,8 +26,8 @@ export const LoginScreen = () => {
     }
 
     return (
-        <Container className="vh-100">
-            <Row>
+        <Container className="vh-100 mt-5">
+            <Row className="bg-light p-5 rounded border">
                 <Col>
                     <h2>Login</h2>
 
@@ -54,7 +54,7 @@ export const LoginScreen = () => {
                             />
                         </Form.Group>
 
-                        <Button variant="primary" type='submit'>Enviar</Button>
+                        <Button variant="primary" type='submit'>Login</Button>
 
                     </Form>
                 </Col>
