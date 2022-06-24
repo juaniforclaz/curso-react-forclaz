@@ -1,4 +1,4 @@
-import logo from '../Img/logo.jpg'
+import logo from '../Img/logo.png'
 import car1 from '../Img/1.png'
 import car2 from '../Img/2.png'
 import car3 from '../Img/3.png'

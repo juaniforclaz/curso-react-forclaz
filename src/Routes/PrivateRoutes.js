@@ -11,6 +11,7 @@ import { Footer } from '../Components/Footer/Footer';
 import { Cart } from '../Components/Cart/Cart';
 import { RegisterScreen } from '../Components/RegisterScreen/RegisterScreen';
 import { UserInfo } from '../Components/UserInfo/UserInfo';
+import { Checkout } from '../Components/Checkout/Checkout';
 
 
 export const PrivateRoutes = () => {
@@ -31,6 +32,7 @@ export const PrivateRoutes = () => {
                 <Route path='/error404' element={<Error404 />} />
                 <Route path='/login' element={<Navigate to={"/"} />} />
                 <Route path='/register' element={<RegisterScreen />} />
+                <Route path='/checkout' element={<Checkout />} />
                 <Route path='/cart' element={<Cart />} />
 
             </Routes>

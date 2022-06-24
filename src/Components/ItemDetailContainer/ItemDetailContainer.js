@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
-import { Container, Row, Col} from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { ItemLoading } from "../ItemLoading/ItemLoading"
 import { pedirDatos } from "../../Mock/PedirDatos"
 import { useParams } from "react-router-dom"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../../Firebase/Config"
 
 
 export const ItemDetailContainer = () => {
@@ -16,18 +18,19 @@ export const ItemDetailContainer = () => {
     const { itemId } = useParams()
 
     useEffect(() => {
+        
         setLoading(true)
 
-        pedirDatos()
-            .then((resp) => {
-                setItem(resp.find((item) => item.id === Number(itemId)))
+        const docRef = doc(db, "productos", itemId)
+
+        getDoc(docRef)
+            .then((doc) => {
+                setItem({ id: doc.id, ...doc.data() })
             })
-            .catch((error) => {
-                console.log('ERROR', error)
-            })
-            .finally(() => {
+            .finally(() =>{
                 setLoading(false)
             })
+
     }, [])
 
     return (

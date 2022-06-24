@@ -3,17 +3,13 @@ import { Button, Col, Container, Row, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../Context/CartContext"
 import Items from "../Items/Items"
+import EmptyCart from "./EmptyCart"
 
 export const Cart = () => {
 
     const { cart, totalPrice, vaciarCarrito, eliminarProd } = useContext(CartContext)
 
-    if (cart.length === 0) {
-        return (
-            <div className="vh-100 px-5 d-flex flex-column align-items-start">El carrito esta vacio
-                <Link to={"/catalogo"}> <button className="btn btn-outline-success m-2">Ir al catalogo</button></Link></div>
-        )
-    }
+    if (cart.length === 0) return <EmptyCart />
 
     return (
         <Container className="vh-100">
@@ -52,6 +48,7 @@ export const Cart = () => {
                     <tbody>
                         <h5>El precio total es ${totalPrice()}</h5>
                         <button onClick={vaciarCarrito} className="btn btn-outline-danger">Vaciar Carrito</button>
+                        <Link to={"/checkout"} className="btn btn-info">Terminar compra</Link>
                     </tbody>
                 </Col>
             </Row>
