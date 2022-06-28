@@ -32,7 +32,7 @@ export const Edit = () => {
             nuevo: nuevo
         }
         await updateDoc(product, data)
-        navigate('/')
+        navigate('/catalogo')
     }
 
     const getProductById = async (id) => {

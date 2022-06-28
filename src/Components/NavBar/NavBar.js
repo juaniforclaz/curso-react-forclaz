@@ -2,7 +2,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Imagenes from '../../Img/Imagenes';
 import { CartWidget } from '../CartWidget/CartWidget';
-
 import { useAuthContext } from '../../Context/AuthContext';
 
 export const NavBar = () => {
@@ -20,7 +19,7 @@ export const NavBar = () => {
                     <Link to={'/catalogo'} className="nav-link d-flex align-items-center mx-3">Catalogo</Link>
                     <Link to={'/nosotros'} className="nav-link d-flex align-items-center mx-3">Nosotros</Link>
                     <Link to={'/contacto'} className="nav-link d-flex align-items-center mx-3">Contacto</Link>
-                    <Link to={'/login'} className="nav-link d-flex align-items-center mx-3">login</Link>
+                    
 
                     {
                         auth.loggedIn

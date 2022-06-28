@@ -21,7 +21,7 @@ export const Item = ({ item }) => {
     const deleteProduct = async (id) => {
         const productDoc = doc(db, "productos", id)
         await deleteDoc(productDoc)
-        navigate('/')
+        navigate('/catalogo')
     }
 
     const confirmDelete = (id) => {

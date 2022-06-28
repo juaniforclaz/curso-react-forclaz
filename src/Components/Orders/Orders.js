@@ -1,7 +1,12 @@
-import { Container, Col, Row } from 'react-bootstrap'
+import { Container, Col, Row, Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-import { getDocs, collection, where, query, doc } from 'firebase/firestore'
+import { getDocs, collection, where, query, doc, deleteDoc } from 'firebase/firestore'
 import { db } from '../../Firebase/Config'
+import { Badge } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 export const Orders = () => {
 
@@ -26,16 +31,49 @@ export const Orders = () => {
             })
     }, [])
 
+    const navigate = useNavigate()
+
+    const deleteProduct = async (id) => {
+        const orderDoc = doc(db, "orders", id)
+        await deleteDoc(orderDoc)
+        navigate('/')
+    }
+
+    const confirmDelete = (id) => {
+        MySwal.fire({
+            title: '¿Eliminar el producto?',
+            text: "No hay vuelta atras",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Eliminar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //llamamos a la fcion para eliminar   
+                deleteProduct(id)
+                Swal.fire(
+                    'Eliminado',
+                    'La orden se elimino correctamente',
+                    'success'
+                )
+            }
+        })
+    }
+
     return (
         <Container className=''>
             <p className='fs-2'>Ordenes</p>
 
             {
                 orders.map((orders) =>
-                    <>
-                        <h4 className='mt-3'>{orders.id}</h4>
+                    <div>
                         <Row className='bg-light mb-2 p-3' key={orders.id}>
-                            <Col>
+                            <Col className=''>
+                                <div className='d-flex'>
+                                    <p className='border-bottom border-2'>Id:</p>
+                                    <span className='mx-2'>{orders.id}</span>
+                                </div>
                                 <div className='d-flex'>
                                     <p className='border-bottom border-2'>Nombre:</p>
                                     <span className='mx-2'>{orders.buyer.nombre}</span>
@@ -48,39 +86,37 @@ export const Orders = () => {
                                     <p className='border-bottom border-2'>Direccion:</p>
                                     <span className='mx-2'>{orders.buyer.direccion}</span>
                                 </div>
-
                             </Col>
-                            <Col>
-
-                                {
-
-                                    orders.items.forEach((element) => {
-                                        if (orders.items.length === 1) {
-                                            orders.items.cantidad = element.cantidad
-                                            orders.items.title = element.title
-                                        }
-                                        if (orders.items.length > 1) {
-                                            orders.items.title = element.cantidad + ' ' + element.title
-                                            console.log(element.cantidad + ' ' + element.title)
-                                        }
-                                    })
-
-                                }
+                            <Col className=''>
+                                {orders.items.map(product => (
+                                    <div className=''>
+                                        <div className='d-flex'>
+                                            <p className='border-bottom border-2'>Nombre:</p>
+                                            <span className='mx-2'>{product.title}</span>
+                                        </div>
+                                        <div className='d-flex'>
+                                            <p className='border-bottom border-2'>cantidad:</p>
+                                            <span className='mx-2'>{product.cantidad}</span>
+                                        </div>
+                                        <div className='d-flex'>
+                                            <p className='border-bottom border-2'>Precio:</p>
+                                            <span className='mx-2'>$ {product.price}</span>
+                                        </div>
+                                    </div>
+                                ))}
                                 <div className='d-flex'>
-                                    <p className='border-bottom border-2'>cantidad de producto/s:</p>
-                                    <span className='mx-2'>{orders.items.length}</span>
+                                    <p className='border-bottom border-2'>Precio total:</p>
+                                    <span className='mx-2'>$ {orders.total}</span>
                                 </div>
-                                <div className='d-flex'>
-                                    <p className='border-bottom border-2'>producto/s:</p>
-                                    <span className='mx-2'>{orders.items.title}</span>
-                                </div>
-                                <div className='d-flex'>
-                                    <p className='border-bottom border-2'>Total:</p>
-                                    <span className='mx-2'>${orders.total}</span>
-                                </div>
+                                <Row className='text-end'>
+                                    <Col>
+                                        <Button variant='success' onClick={() => { confirmDelete(orders.id) }}>Listo</Button>
+                                    </Col>
+                                </Row>
                             </Col>
                         </Row>
-                    </>
+
+                    </div>
                 )
             }
 
