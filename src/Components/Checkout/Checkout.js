@@ -4,6 +4,7 @@ import { useCartContext } from "../../Context/CartContext"
 import { Navigate } from 'react-router-dom'
 import { collection, getDocs, addDoc, doc, updateDoc, getDoc, writeBatch, query, where, documentId } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
+import { Modal, Modall, TemplateModal } from "../TemplateModal/TemplateModal"
 
 
 export const Checkout = () => {
@@ -25,6 +26,7 @@ export const Checkout = () => {
     }
 
     const handleSubmit = async (e) => {
+
         e.preventDefault()
 
         if (values.nombre.length < 5) {

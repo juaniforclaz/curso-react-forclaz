@@ -6,9 +6,11 @@ import Items from '../Items/Items';
 export const Footer = () => {
     return (
 
-        <div className='mt-5 text-center py-5 bg-light container-fluid' fixed="bottom">
+        <div className='mt-5 text-center py-5 bg-light container-fluid'>
             <Row>
-                <h3>Footer</h3>
+                <footer className='py-5'>
+                    <h3>Footer</h3>
+                </footer>
             </Row>
         </div>
 

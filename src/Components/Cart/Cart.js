@@ -12,7 +12,7 @@ export const Cart = () => {
     if (cart.length === 0) return <EmptyCart />
 
     return (
-        <Container className="vh-100">
+        <Container className="vh-100 py-4">
             <Row>
                 <Col>
                     <h2>Carrito</h2>

@@ -48,3 +48,17 @@ body {
     height: 85vh;
     width: 100%;
 }
+
+.item-loading {
+    animation: loading .7s infinite alternate-reverse;
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

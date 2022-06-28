@@ -1,5 +1,10 @@
 import { NavBar } from '../Components/NavBar/NavBar';
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { Footer } from '../Components/Footer/Footer';
+import { Cart } from '../Components/Cart/Cart';
+import { RegisterScreen } from '../Components/RegisterScreen/RegisterScreen';
+import { Checkout } from '../Components/Checkout/Checkout';
+import { Create } from '../Components/Create/Create';
 import { Nosotros } from '../Components/Nosotros/Nosotros';
 import { Contacto } from '../Components/Contacto/Contacto';
 import { Catalogo } from '../Components/Catalogo/Catalogo';
@@ -7,20 +12,19 @@ import { Inicio } from '../Components/Inicio/Inicio';
 import { ItemListContainer } from '../Components/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from '../Components/ItemDetailContainer/ItemDetailContainer';
 import { Error404 } from '../Components/Error404/Error404';
-import { Footer } from '../Components/Footer/Footer';
-import { Cart } from '../Components/Cart/Cart';
-import { RegisterScreen } from '../Components/RegisterScreen/RegisterScreen';
+import { Edit } from '../Components/Edit/Edit';
+import { Orders } from '../Components/Orders/Orders';
 import { UserInfo } from '../Components/UserInfo/UserInfo';
-import { Checkout } from '../Components/Checkout/Checkout';
 
 
 export const PrivateRoutes = () => {
+
     return (
         <>
 
             <NavBar />
             <UserInfo />
-
+            
             <Routes>
 
                 <Route path='/' element={<Inicio />} />
@@ -34,6 +38,10 @@ export const PrivateRoutes = () => {
                 <Route path='/register' element={<RegisterScreen />} />
                 <Route path='/checkout' element={<Checkout />} />
                 <Route path='/cart' element={<Cart />} />
+                <Route path='/orders' element={<Orders />} />
+                <Route path='/create' element={<Create />} />
+                <Route path='/edit/:id' element={<Edit />} />
+
 
             </Routes>
 

@@ -1,18 +1,26 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { Col, Container, Row, Form } from "react-bootstrap"
 import { Item } from "../Item/Item"
 import { NavCatalogo } from "../NavCatalogo/NavCatalogo"
 import Items from "../Items/Items"
+import { Footer } from "../Footer/Footer"
 import { ItemLoading } from "../ItemLoading/ItemLoading"
+import { useProductos } from "../ItemListContainer/useProductos"
 
 export const ItemList = ({ items }) => {
 
+    const { loading } = useProductos()
+
     const [searchTerm, setSearchTerm] = useState('')
 
-    const [stateSearch, setStateSearch] = useState('false')
+    const [stateSearch, setStateSearch] = useState(false)
+
+    const [found, setFound] = useState('no encontrado')
 
     return (
-        <Container className="item-list">
+
+        <Container className="item-list py-4">
 
             <Row className="py-2 mb-3">
                 <Col xs={4}>
@@ -41,14 +49,11 @@ export const ItemList = ({ items }) => {
                         } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
                             return item
                         } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase()) === false) {
-                            document.querySelector('.search').textContent = 'Producto no encontrado'
 
                         }
 
                     }).map((item) => < Item key={item.id} item={item} />)
                 }
-
-                <h4 className="search text-center mt-2 text-danger"></h4>
 
             </Row>
 

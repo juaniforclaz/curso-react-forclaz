@@ -1,5 +1,5 @@
 import { ItemList } from "../ItemList/ItemList"
-import { ItemLoadingContainer } from "../ItemLoadingContainer/ItemLoadingContainer"
+import { ItemLoading } from "../ItemLoading/ItemLoading"
 import { useProductos } from "./useProductos"
 
 export const ItemListContainer = () => {
@@ -11,7 +11,7 @@ export const ItemListContainer = () => {
 
             {
                 loading
-                    ? <ItemLoadingContainer />
+                    ? <ItemLoading />
 
                     : <ItemList items={items} />
             }
