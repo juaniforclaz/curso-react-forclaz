@@ -1,9 +1,12 @@
 import { doc, updateDoc, getDoc } from "firebase/firestore"
+import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../../Firebase/Config"
 import { useEffect } from "react"
+import { addDoc, collection } from "firebase/firestore"
+import { storage } from "../../Firebase/Config"
 
 export const Edit = () => {
 
@@ -18,6 +21,8 @@ export const Edit = () => {
     const navigate = useNavigate()
 
     const { id } = useParams()
+
+    const [progress, setProgress] = useState(0)
 
     const update = async (e) => {
         e.preventDefault()
@@ -56,14 +61,36 @@ export const Edit = () => {
         // eslint-disable-next-line
     }, [])
 
+    const formHandler = (e) => {
+        e.preventDefault();
+        const file = e.target[0].files[0];
+        uploadFiles(file);
+    };
+
+    const uploadFiles = (file) => {
+        if (!file) return;
+        const storageRef = ref(storage, `/files/${file.name}`)
+        const uploadTask = uploadBytesResumable(storageRef, file)
+
+        uploadTask.on("state_changed", (snapshot) => {
+            const prog = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes * 100)
+            )
+            setProgress(prog)
+        }, (err) => console.log(err),
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((url) => setImg(url))
+            })
+    }
+
     return (
         <div className='container'>
             <div className='row'>
                 <div className='col'>
-                    
+
                     <h1>Editar</h1>
 
-                    <form onSubmit={update}>
+                    <form onSubmit={update} className='text-uppercase'>
                         <div class="input-group mb-3 border">
                             <span class="input-group-text">Nombre</span>
                             <input
@@ -83,13 +110,14 @@ export const Edit = () => {
                             />
                         </div>
                         <div class="input-group mb-3 border">
-                            <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
-                            <select onChange={(e) => setCat(e.target.value)} class="form-select">
+                            <label className="input-group-text ">Categoria</label>
+                            <select onChange={(e) => setCat(e.target.value)} className="form-select text-uppercase">
                                 <option value={categoria}>{categoria}</option>
                                 <option value={"bolso-odo-uba"}>Odonto</option>
                                 <option value={"mochila"}>Mochila</option>
                                 <option value={"cartera"}>Cartera</option>
                                 <option value={"riñonera"}>Riñonera</option>
+                                <option value={"bandolera"}>bandolera</option>
                             </select>
                         </div>
                         <div class="input-group mb-3 border">
@@ -110,22 +138,31 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
-                        <div class="input-group mb-3">
-                            <span className="input-group-text">Nuevo</span>
-                            <div class="input-group-text">
-                                <input
-                                    class="form-check-input mt-0"
-                                    type="checkbox"
-                                    value={true}
-                                    onChange={(e) => setNuevo(e.target.value)}
-                                    aria-label="Checkbox for following text input" />
-                            </div>
+                        <div className="input-group mb-3 border">
+                            <label className="input-group-text">Nuevo</label>
+                            <select onChange={(e) => setNuevo(e.target.value)} className="form-select text-uppercase">
+                                <option defaultValue={{ nuevo }}>{nuevo}</option>
+                                <option value={"true"}>Si</option>
+                                <option value={"false"}>no</option>
+                            </select>
                         </div>
-                        <div class="input-group mb-3 border">
-                            <label class="input-group-text" for="inputGroupFile01">Imagen</label>
-                            <input type="file" class="form-control" id="inputGroupFile01" />
+                        <div className="input-group mb-3 border">
+                            <span className="input-group-text">Imagen</span>
+                            <input
+                                value={img}
+                                onChange={(e) => setImg(e.target.value)}
+                                type="text"
+                                className="form-control"
+                            />
                         </div>
                         <button type='submit' className='btn btn-primary'>Update</button>
+                    </form>
+                    <form className="mt-3" onSubmit={formHandler}>
+                        <div className="input-group mb-3 border">
+                            <label className="input-group-text" for="inputGroupFile01">Imagen %{progress}</label>
+                            <input type="file" className="form-control" />
+                            <button type="submit" className="btn btn-info">Subir foto</button>
+                        </div>
                     </form>
                 </div>
             </div>

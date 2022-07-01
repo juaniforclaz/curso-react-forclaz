@@ -6,9 +6,11 @@ import { collection, doc, getDocs, query, where } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { Item } from "../Item/Item"
+import { ItemLoading } from "../ItemLoading/ItemLoading"
 
-
-export const NewItemsContainer = () => {
+export const SecondCat = () => {
+    const FirstCat = "mochila"
 
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
@@ -20,7 +22,7 @@ export const NewItemsContainer = () => {
         setLoading(true)
 
         const productosRef = collection(db, "productos")
-        const q = query(productosRef, where("nuevo" , "==", true))
+        const q = query(productosRef, where("categoria", "==", `${FirstCat}`))
 
         getDocs(q)
             .then((resp) => {
@@ -39,10 +41,14 @@ export const NewItemsContainer = () => {
 
     return (
         <Container className="mt-5">
-            <h4 className="mb-3 text-center">Productos nuevos</h4>
-            <NewItems items={items} />
-
+            <h3 className="p-3 text-center">{FirstCat}S</h3>
+            <Row>
+                {
+                    loading
+                        ? <ItemLoading />
+                        : items.map((item) => < Item key={item.id} item={item} />)
+                }
+            </Row>
         </Container>
     )
-
 }

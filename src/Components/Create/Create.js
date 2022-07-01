@@ -88,12 +88,13 @@ export const Create = () => {
                         </div>
                         <div className="input-group mb-3 border">
                             <label className="input-group-text">Categoria</label>
-                            <select onChange={(e) => setCat(e.target.value)} className="form-select">
+                            <select onChange={(e) => setCat(e.target.value)} className="form-select text-uppercase">
                                 <option defaultValue={categoria}>Seleccionar</option>
                                 <option value={"bolso-odo-uba"}>Odonto</option>
                                 <option value={"mochila"}>Mochila</option>
                                 <option value={"cartera"}>Cartera</option>
                                 <option value={"riñonera"}>Riñonera</option>
+                                <option value={"bandolera"}>bandolera</option>
                             </select>
                         </div>
                         <div className="input-group mb-3 border">
@@ -114,16 +115,12 @@ export const Create = () => {
                                 className="form-control"
                             />
                         </div>
-                        <div className="input-group mb-3">
-                            <span className="input-group-text">Nuevo</span>
-                            <div className="input-group-text">
-                                <input
-                                    className="form-check-input mt-0"
-                                    type="checkbox"
-                                    value={true}
-                                    onChange={(e) => setNuevo(e.target.value)}
-                                    aria-label="Checkbox for following text input" />
-                            </div>
+                        <div className="input-group mb-3 border">
+                            <label className="input-group-text">Nuevo</label>
+                            <select onChange={(e) => setNuevo(e.target.value)} className="form-select text-uppercase">
+                                <option defaultValue={false}>No</option>
+                                <option value={true}>Si</option>
+                            </select>
                         </div>
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Imagen</span>

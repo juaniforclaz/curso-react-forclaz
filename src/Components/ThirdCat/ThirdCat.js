@@ -1,13 +1,17 @@
-import { Item } from "../Item/Item"
 import { ItemList } from "../ItemList/ItemList"
+import { NewItems } from "../NewItems/NewItems"
 import { Col, Container, Row } from "react-bootstrap"
 import { useProductos } from "../ItemListContainer/useProductos"
 import { collection, doc, getDocs, query, where } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { Item } from "../Item/Item"
+import { ItemLoading } from "../ItemLoading/ItemLoading"
 
-export const NewItems = () => {
+export const ThirdCat = () => {
+
+    const FirstCat = "bandolera"
 
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
@@ -19,7 +23,7 @@ export const NewItems = () => {
         setLoading(true)
 
         const productosRef = collection(db, "productos")
-        const q = query(productosRef, where("nuevo", "==", "true"))
+        const q = query(productosRef, where("categoria", "==", `${FirstCat}`))
 
         getDocs(q)
             .then((resp) => {
@@ -36,17 +40,17 @@ export const NewItems = () => {
             })
     }, [categoryId])
 
+
     return (
         <Container className="mt-5">
-            <h3 className="text-center p-3">productos nuevos</h3>
+            <h3 className="text-center p-3">{FirstCat}S</h3>
             <Row>
-
                 {
-                    items.map((item) => < Item key={item.id} item={item} />)
+                    loading
+                        ? <ItemLoading />
+                        : items.map((item) => < Item key={item.id} item={item} />)
                 }
-
             </Row>
         </Container>
-
     )
 }
