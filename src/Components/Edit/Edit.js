@@ -91,8 +91,8 @@ export const Edit = () => {
                     <h1>Editar</h1>
 
                     <form onSubmit={update} className='text-uppercase'>
-                        <div class="input-group mb-3 border">
-                            <span class="input-group-text">Nombre</span>
+                        <div className="input-group mb-3 border">
+                            <span className="input-group-text">Nombre</span>
                             <input
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -100,8 +100,8 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
-                        <div class="input-group mb-3 border">
-                            <span class="input-group-text">Descripcion</span>
+                        <div className="input-group mb-3 border">
+                            <span className="input-group-text">Descripcion</span>
                             <input
                                 value={desc}
                                 onChange={(e) => setDesc(e.target.value)}
@@ -109,7 +109,7 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
-                        <div class="input-group mb-3 border">
+                        <div className="input-group mb-3 border">
                             <label className="input-group-text ">Categoria</label>
                             <select onChange={(e) => setCat(e.target.value)} className="form-select text-uppercase">
                                 <option value={categoria}>{categoria}</option>
@@ -120,8 +120,8 @@ export const Edit = () => {
                                 <option value={"bandolera"}>bandolera</option>
                             </select>
                         </div>
-                        <div class="input-group mb-3 border">
-                            <span class="input-group-text">Stock</span>
+                        <div className="input-group mb-3 border">
+                            <span className="input-group-text">Stock</span>
                             <input
                                 value={stock}
                                 onChange={(e) => setStock(e.target.value)}
@@ -129,8 +129,8 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
-                        <div class="input-group mb-3 border">
-                            <span class="input-group-text">Precio</span>
+                        <div className="input-group mb-3 border">
+                            <span className="input-group-text">Precio</span>
                             <input
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
@@ -159,7 +159,7 @@ export const Edit = () => {
                     </form>
                     <form className="mt-3" onSubmit={formHandler}>
                         <div className="input-group mb-3 border">
-                            <label className="input-group-text" for="inputGroupFile01">Imagen %{progress}</label>
+                            <label className="input-group-text">Imagen %{progress}</label>
                             <input type="file" className="form-control" />
                             <button type="submit" className="btn btn-info">Subir foto</button>
                         </div>

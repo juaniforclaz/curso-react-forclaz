@@ -62,7 +62,7 @@ export const Orders = () => {
     }
 
     return (
-        <Container className=''>
+        <Container>
             <p className='fs-2'>Ordenes</p>
 
             {

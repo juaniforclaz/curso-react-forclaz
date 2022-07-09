@@ -30,7 +30,7 @@ export const ItemList = ({ items }) => {
                 <Col xs={8}>
                     <Form.Group className='d-flex align-items-center mx-3' controlId="formBasicEmail">
                         <Form.Label className='text-black mx-2'>{Items.busqueda}</Form.Label>
-                        <Form.Control type="text" placeholder="Buscar por nombre de producto" onChange={(event) => {
+                        <Form.Control type="text" placeholder="Buscar por nombre de producto" className="border" onChange={(event) => {
                             setSearchTerm(event.target.value)
                         }}
                         />

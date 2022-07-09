@@ -1,5 +1,4 @@
 import { Breadcrumb } from "react-bootstrap"
-import { propTypes } from "react-bootstrap/esm/Image"
 import { useNavigate, useParams } from "react-router-dom"
 
 
@@ -16,7 +15,6 @@ export const BreadCrumb = (props) => {
 
             <Breadcrumb.Item onClick={handleVolver1}>Volver</Breadcrumb.Item>
             <Breadcrumb.Item onClick={handleVolver1}>{props.producto}</Breadcrumb.Item>
-            <Breadcrumb.Item active>{props.producto2}</Breadcrumb.Item>
 
         </Breadcrumb>
     )

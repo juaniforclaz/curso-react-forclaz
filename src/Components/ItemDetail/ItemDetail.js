@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 export const ItemDetail = ({ item }) => {
 
     const { addItem, isInCart } = useContext(CartContext)
-    console.log(isInCart(item.id))
 
     const [cantidad, setCantidad] = useState(0)
 
@@ -41,21 +40,26 @@ export const ItemDetail = ({ item }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title>{item.title}</Card.Title>
-                            <Card.Text>{item.price}</Card.Text>
+                            <Card.Text>${item.price}</Card.Text>
                             <Card.Text>{item.desc}</Card.Text>
+
+                            {
+                                item.stock ? <Card.Text>Stock: {item.stock}</Card.Text> : <Card.Text>No hay stock</Card.Text>
+                            }
+
                         </Card.Body>
                     </Card >
 
                     {
                         isInCart(item.id)
                             ? <Link to={'/cart'} className="btn btn-outline-success mt-2">Finalizar Compra</Link>
-                            :
-                            <ItemCount
+                            : item.stock ? <ItemCount
                                 max={item.stock}
                                 counter={cantidad}
                                 setCounter={setCantidad}
                                 onAdd={handleAgregar}
-                            />
+                            /> : ''
+
                     }
 
 

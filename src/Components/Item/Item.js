@@ -52,7 +52,7 @@ export const Item = ({ item }) => {
                 <Badge className="position-absolute top-0 start-100 translate-middle p-1" bg="danger">{item.nuevo ? 'Nuevo' : ''}</Badge>
                 <Card.Img src={item.img} className="mb-3 img-item"></Card.Img>
                 <Card.Title>{item.title}</Card.Title>
-                <Card.Text>{item.price}</Card.Text>
+                <Card.Text>${item.price}</Card.Text>
 
                 {
                     auth.loggedIn

@@ -1,12 +1,11 @@
 import { useState } from "react"
 import { Button, Col, Container, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { Item } from "../Item/Item"
 
 export const ItemCount = ({ max, setCounter, counter, onAdd }) => {
 
     const [stateCant, setStateCant] = useState('Seleccione la cantidad para agregar al carrito')
-
-    const [stateCart, setStateCart] = useState('Finalizar compra')
 
     const handleSumar = () => {
         counter < max && setCounter(counter + 1)
@@ -35,7 +34,6 @@ export const ItemCount = ({ max, setCounter, counter, onAdd }) => {
             <Row>
                 <Col xs={12}>
                     <button onClick={onAdd} className="btn btn-success my-2 btn-counter" disabled={counter === 0}>Agregar al carrito</button>
-                    <Link to={'/cart'}><p className="finalizar btn btn-outline-success d-none"></p></Link>
                     <p className="m-0 p-0">{counter === 0 && stateCant}</p>
                 </Col>
             </Row>

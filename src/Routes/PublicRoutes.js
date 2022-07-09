@@ -29,7 +29,7 @@ export const PublicRoutes = () => {
                 <Route path='/login' element={<LoginScreen />} />
                 <Route path='/checkout' element={<Checkout />} />
                 <Route path='/cart' element={<Cart />} />
-                <Route path='*' element={<Navigate to={"/login"} />} />
+                <Route path='*' element={<Navigate to={"/"} />} />
             </Routes>
 
             <Footer />

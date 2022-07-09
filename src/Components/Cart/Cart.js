@@ -38,18 +38,31 @@ export const Cart = () => {
                                         <td>{item.title}</td>
                                         <td><span className="d-flex mx-auto">{item.cantidad}</span></td>
                                         <td>${item.price * item.cantidad}</td>
-                                        <td><img src={item.img} className="img-cart rounded" /></td>
+                                        <td><img src={item.img} className="img-cart" /></td>
                                         <td><button onClick={() => eliminarProd(item.id)} className="btn btn-outline-dark p-2 d-flex">{Items.borrar}</button></td>
                                     </tr>
                                 ))
                             }
                         </tbody>
                     </Table>
-                    <tbody>
-                        <h5>El precio total es ${totalPrice()}</h5>
-                        <button onClick={vaciarCarrito} className="btn btn-outline-danger">Vaciar Carrito</button>
-                        <Link to={"/checkout"} className="btn btn-info">Terminar compra</Link>
-                    </tbody>
+                </Col>
+            </Row>
+            <Row className="mt-3">
+                <Col>
+                    <h2>Detalle:</h2>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <h5 className="opacity-50">El precio total es ${totalPrice()}</h5>
+                </Col>
+            </Row>
+            <Row className="">
+                <Col xl={2}>
+                    <Link to={"/checkout"} className="btn btn-success mt-3">Terminar compra</Link>
+                </Col>
+                <Col xl={2}>
+                    <button onClick={vaciarCarrito} className="btn btn-danger mx-2 mt-3">Vaciar Carrito</button>
                 </Col>
             </Row>
         </Container>

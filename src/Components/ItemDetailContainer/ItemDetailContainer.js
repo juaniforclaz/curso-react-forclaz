@@ -17,7 +17,7 @@ export const ItemDetailContainer = () => {
     const { itemId } = useParams()
 
     useEffect(() => {
-        
+
         setLoading(true)
 
         const docRef = doc(db, "productos", itemId)
@@ -26,7 +26,7 @@ export const ItemDetailContainer = () => {
             .then((doc) => {
                 setItem({ id: doc.id, ...doc.data() })
             })
-            .finally(() =>{
+            .finally(() => {
                 setLoading(false)
             })
 
@@ -37,16 +37,7 @@ export const ItemDetailContainer = () => {
 
             {
                 loading
-                    ?
-                    <Container className="vh-100">
-                        <Row className="mt-3">
-                            <Col className="mb-3">
-                                <ItemLoading />
-                            </Col>
-
-                        </Row>
-                    </Container>
-
+                    ? <ItemLoading />
                     : <ItemDetail item={item} />
             }
 

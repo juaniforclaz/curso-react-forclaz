@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 export const useProductos = () => {
-    
+
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
 
