@@ -14,7 +14,7 @@ El sitio consta de 3 secciones o paginas, en primer lugar, el inicio posee un ca
 
 Lo interesante es que en el footer esta el boton para logearse como administrador. Al iniciar con esa vista, el cliente admin puede crear, editar y eliminar productos, asi como tambien ver las ordenes generadas por los clientes que hayan comprado.
 
-* [LINK GITHUB PAGES]('https://juaniforclaz.github.io/curso-react-forclaz')
+* [LINK GITHUB PAGES](https://juaniforclaz.github.io/curso-react-forclaz)
 
 ## LIBRERIAS / DEPENDENCIAS UTILIZADAS
 
@@ -29,6 +29,6 @@ Lo interesante es que en el footer esta el boton para logearse como administrado
 
 ## VIDEOS
 
-* [CRUD]('https://drive.google.com/file/d/1W5qYGLcfH93EtOc9_ycn_DTVzlwzSBNX/view?usp=sharing')
-* [NAVEGACION]('https://drive.google.com/file/d/1SrgNmvZhcpI89GV5CclePZrD8qZ13UjH/view?usp=sharing')
-* [COMPRA]('https://drive.google.com/file/d/1aQsm7O_mNHXHa7DNwcU54ZZf7LmqXXyY/view?usp=sharing')
+* [CRUD](https://drive.google.com/file/d/1W5qYGLcfH93EtOc9_ycn_DTVzlwzSBNX/view?usp=sharing)
+* [NAVEGACION](https://drive.google.com/file/d/1SrgNmvZhcpI89GV5CclePZrD8qZ13UjH/view?usp=sharing)
+* [COMPRA](https://drive.google.com/file/d/1aQsm7O_mNHXHa7DNwcU54ZZf7LmqXXyY/view?usp=sharing)
