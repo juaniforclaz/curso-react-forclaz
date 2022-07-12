@@ -1,8 +1,11 @@
 import { createContext, useContext, useState } from "react"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 const mockUsers = [
     { email: 'juaniforclaz55@gmail.com', pass: '1234' },
-    { email: 'nose@gmail.com', pass: '5678' }
+    { email: 'admin@admin.com', pass: 'admin' }
 ]
 
 export const AuthContext = createContext()
@@ -13,13 +16,10 @@ export const useAuthContext = () => {
 
 export const AuthProvider = ({ children }) => {
 
-
     const [auth, setAuth] = useState({
         loggedIn: false,
         userId: null
     })
-
-    console.log(auth)
 
     const login = (values) => {
         const { email, password } = values
@@ -31,10 +31,23 @@ export const AuthProvider = ({ children }) => {
                     userId: match.email
                 })
             } else {
-                alert('password incorrecto')
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Contraseña incorrecta',
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                })
+
             }
         } else {
-            alert('usuario no encontrado')
+            MySwal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Usuario no encontrado',
+                showConfirmButton: false,
+                showCloseButton: true,
+            })
         }
     }
 
@@ -46,8 +59,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
+
         <AuthContext.Provider value={{ auth, login, logout }}>
             {children}
         </AuthContext.Provider>
+
     )
+
 }

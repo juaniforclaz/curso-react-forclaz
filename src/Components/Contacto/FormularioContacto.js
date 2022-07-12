@@ -1,59 +1,111 @@
-import { useState } from "react"
+import { Formik } from "formik"
+import * as Yup from 'yup'
+import { useRef } from "react";
+import emailjs from 'emailjs-com'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
+
+const schema = Yup.object().shape({
+    nombre: Yup.string()
+        .required('Es necesario completar este campo')
+        .min(4, 'El nombre es demasiado corto'),
+    email: Yup.string()
+        .required('Es necesario completar este campo')
+        .email('Formato de email inválido'),
+    telefono: Yup.string()
+        .required('Es necesario completar este campo')
+        .min(8, 'El numero es demasiado corto'),
+    mensaje: Yup.string()
+        .required('Es necesario completar este campo')
+        .min(4, 'Por favor, escriba un mensaje coherente')
+})
 
 export const FormularioContacto = () => {
 
-    const [values, setValues] = useState({
-        nombre: '',
-        email: '',
-        direccion: ''
-    })
-
-    const handleInputChange = (e) => {
-        console.log(e.target.name)
-
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value
-        })
-    }
+    const form = useRef();
 
     const handleSubmit = (e) => {
-        e.preventDefault()
 
-    }
+        emailjs.sendForm('service_9tvi5wn', 'template_fb8yqkz', form.current, '7FyRTlEA_J40jvcyh')
+            .then((result) => {
+                MySwal.fire({
+                    title: 'El mensaje se envió correctamente',
+                    icon: 'success',
+                    showCloseButton: true,
+                    showConfirmButton: false,
+                })
+                window.location.reload()
+            })
+
+    };
 
     return (
-        <form className="bg-light p-5" onSubmit={handleSubmit}>
-            <h4>Datos personales</h4>
-            <input
-                name="nombre"
-                onChange={handleInputChange}
-                value={values.nombre}
-                placeholder="Nombre"
-                type={'text'}
-                className="form-control my-2"
-            />
+        <>
+            <Formik
+                initialValues={{
+                    nombre: '',
+                    email: '',
+                    telefono: '',
+                    mensaje: ''
+                }}
+                onSubmit={handleSubmit}
+                validationSchema={schema}
+            >
 
-            <input
-                name="email"
-                value={values.email}
-                onChange={handleInputChange}
-                placeholder="Email"
-                type={'email'}
-                className="form-control my-2"
-            />
+                {(formik) => (
 
-            <input
-                name="direccion"
-                onChange={handleInputChange}
-                value={values.direccion}
-                placeholder="Dirección"
-                type={'text'}
-                className="form-control my-2"
-            />
+                    <form ref={form} onSubmit={formik.handleSubmit} className='bg-light p-4'>
 
-            <button type="submit" className="btn btn-primary">Enviar</button>
+                        <h3>Contacta con nosotros</h3>
 
-        </form>
+                        <input
+                            value={formik.values.nombre}
+                            name="nombre"
+                            onChange={formik.handleChange}
+                            type={"text"}
+                            placeholder="Nombre"
+                            className="form-control my-2"
+                        />
+                        {formik.errors.nombre && <p className="alert alert-danger">{formik.errors.nombre}</p>}
+
+                        <input
+                            value={formik.values.email}
+                            name="email"
+                            onChange={formik.handleChange}
+                            type={"text"}
+                            placeholder="Email"
+                            className="form-control my-2"
+                        />
+                        {formik.errors.email && <p className="alert alert-danger">{formik.errors.email}</p>}
+
+                        <input
+                            value={formik.values.telefono}
+                            name="telefono"
+                            onChange={formik.handleChange}
+                            type={"tel"}
+                            placeholder="Telefono"
+                            className="form-control my-2"
+                        />
+                        {formik.errors.telefono && <p className="alert alert-danger">{formik.errors.telefono}</p>}
+
+                        <input
+                            value={formik.values.mensaje}
+                            name="mensaje"
+                            onChange={formik.handleChange}
+                            type={"text"}
+                            placeholder="Mensaje"
+                            className="form-control my-2"
+                        />
+                        {formik.errors.mensaje && <p className="alert alert-danger">{formik.errors.mensaje}</p>}
+
+                        <button type="submit" className="btn btn-primary">Enviar</button>
+
+                    </form>
+
+                )}
+            </Formik>
+
+        </>
     )
 }

@@ -10,9 +10,11 @@ export const CartWidget = () => {
     if (totalCant() >= 1) {
 
         return (
+
             <Link to={'/cart'} className="nav-link">
                 <span className="d-flex align-items-center mx-3">{Items.carrito}<span className="mx-1">{totalCant()}</span></span>
             </Link>
+            
         )
 
     }

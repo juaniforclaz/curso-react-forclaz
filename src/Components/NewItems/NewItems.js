@@ -1,8 +1,6 @@
 import { Item } from "../Item/Item"
-import { ItemList } from "../ItemList/ItemList"
-import { Col, Container, Row } from "react-bootstrap"
-import { useProductos } from "../ItemListContainer/useProductos"
-import { collection, doc, getDocs, query, where } from "firebase/firestore"
+import { Container, Row } from "react-bootstrap"
+import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
@@ -37,8 +35,11 @@ export const NewItems = () => {
     }, [categoryId])
 
     return (
+
         <Container className="mt-5">
+
             <h3 className="text-center p-3">productos nuevos</h3>
+
             <Row>
 
                 {
@@ -46,6 +47,7 @@ export const NewItems = () => {
                 }
 
             </Row>
+
         </Container>
 
     )

@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { Button, Col, Container, Row } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import { Item } from "../Item/Item"
 
 export const ItemCount = ({ max, setCounter, counter, onAdd }) => {
 
@@ -17,9 +15,17 @@ export const ItemCount = ({ max, setCounter, counter, onAdd }) => {
 
 
     return (
+
         <Container className="mt-2 rounded border border-1 p-3 bg-white mb-2">
-            <Row><p className="">Cantidad seleccionada: <span>{counter}</span></p></Row>
+
+            <Row>
+
+                <p className="">Cantidad seleccionada: <span>{counter}</span></p>
+
+            </Row>
+
             <Row className="counter">
+
                 <Col>
                     <Button
                         className="btn btn-danger w-25"
@@ -30,13 +36,18 @@ export const ItemCount = ({ max, setCounter, counter, onAdd }) => {
                         onClick={handleSumar}
                         disabled={counter === max}>+</Button>
                 </Col>
+
             </Row>
+
             <Row>
+
                 <Col xs={12}>
                     <button onClick={onAdd} className="btn btn-success my-2 btn-counter" disabled={counter === 0}>Agregar al carrito</button>
                     <p className="m-0 p-0">{counter === 0 && stateCant}</p>
                 </Col>
+
             </Row>
+
         </Container>
     )
 }

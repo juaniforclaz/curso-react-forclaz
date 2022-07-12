@@ -1,26 +1,25 @@
-
 import { useState } from "react"
 import { useCartContext } from "../../Context/CartContext"
 import { Link, Navigate } from 'react-router-dom'
-import { collection, getDocs, addDoc, doc, updateDoc, getDoc, writeBatch, query, where, documentId } from "firebase/firestore"
+import { collection, getDocs, addDoc, writeBatch, query, where, documentId } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
-import { Modal, Modall, TemplateModal } from "../TemplateModal/TemplateModal"
 import { Formik } from "formik"
 import * as Yup from 'yup'
 import { Button } from "react-bootstrap"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 const schema = Yup.object().shape({
     nombre: Yup.string()
-        .required('Este campo es obligatorio')
-        .min(4, 'El nombre es demasiado corto')
-        .max(30, 'Máximo 30 caracteres'),
+        .required('Es necesario completar este campo')
+        .min(4, 'El nombre es demasiado corto'),
     email: Yup.string()
-        .required('Este campo es obligatorio')
+        .required('Es necesario completar este campo')
         .email('Formato de email inválido'),
     direccion: Yup.string()
-        .required('Este campo es obligatorio')
+        .required('Es necesario completar este campo')
         .min(4, 'La dirección es demasiado corta')
-        .max(30, 'Máximo 30 caracteres'),
 })
 
 export const Checkout = () => {
@@ -65,19 +64,28 @@ export const Checkout = () => {
                     vaciarCarrito()
                 })
         } else {
-            console.log(outOfStock)
-            alert("Hay items sin stock")
+            MySwal.fire({
+                title: 'Alerta',
+                text: 'El producto no tiene stock',
+                icon: 'warning'
+            })
         }
     }
 
     if (orderId) {
         return (
+
             <div className="container my-5 vh-100">
                 <h2>Gracias por su compra!</h2>
                 <hr />
                 <p>Su número de orden es: {orderId}</p>
-                <Link to={'/'}><Button>Inicio</Button></Link>
+                <p className="text-danger">IMPORTANTE: Guardá tu numero de orden porque te lo pediremos a la hora de entregar el pedido</p>
+                <p className="text-primary">nos pondremos en contacto cuando tengamos todo listo!</p>
+                <Link to={'/'}><Button>Ir al nicio</Button></Link>
+                <Link to={'/catalogo'} className="mx-3"><Button variant="success">Ver mas productos</Button></Link>
+                <Link to={'/contacto'}><Button variant="cyan">Contacta con nosotros</Button></Link>
             </div>
+
         )
     }
 
@@ -86,6 +94,7 @@ export const Checkout = () => {
     }
 
     return (
+
         <div className="container my-5">
             <h2>Checkout</h2>
             <hr />
@@ -99,14 +108,17 @@ export const Checkout = () => {
                 onSubmit={generarOrden}
                 validationSchema={schema}
             >
+
                 {(formik) => (
+
                     <form onSubmit={formik.handleSubmit}>
+
                         <input
                             value={formik.values.nombre}
                             name="nombre"
                             onChange={formik.handleChange}
                             type={"text"}
-                            placeholder="John Doe"
+                            placeholder="Nombre"
                             className="form-control my-2"
                         />
                         {formik.errors.nombre && <p className="alert alert-danger">{formik.errors.nombre}</p>}
@@ -116,7 +128,7 @@ export const Checkout = () => {
                             name="email"
                             onChange={formik.handleChange}
                             type={"text"}
-                            placeholder="email@example.com"
+                            placeholder="Email"
                             className="form-control my-2"
                         />
                         {formik.errors.email && <p className="alert alert-danger">{formik.errors.email}</p>}
@@ -126,18 +138,22 @@ export const Checkout = () => {
                             name="direccion"
                             onChange={formik.handleChange}
                             type={"text"}
-                            placeholder="Calle falsa 123"
+                            placeholder="Direccion"
                             className="form-control my-2"
                         />
                         {formik.errors.direccion && <p className="alert alert-danger">{formik.errors.direccion}</p>}
 
                         <button type="submit" className="btn btn-primary">Enviar</button>
+
                     </form>
+
                 )}
+
             </Formik>
 
-
             <button onClick={vaciarCarrito} className="btn btn-danger my-2">Cancelar mi compra</button>
+
         </div>
+
     )
 }

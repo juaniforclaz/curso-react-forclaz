@@ -36,6 +36,12 @@ body {
     width: 100%;
 }
 
+.img-carousel {
+    height: 45vh;
+    width: 100%;
+    object-fit: cover;
+}
+
 .card-item {
     transition: all .4s;
     width: 18rem;
@@ -46,19 +52,16 @@ body {
 }
 
 .carousel {
-    height: 85vh;
+    height: 45vh;
 }
 
-.img-carousel {
-    height: 85vh;
-    width: 100%;
-}
 
 .item-loading {
     animation: loading .7s infinite alternate-reverse;
 }
 
 @keyframes loading {
+
     0% {
         opacity: 1;
     }
@@ -66,4 +69,5 @@ body {
     100% {
         opacity: 0;
     }
+
 }

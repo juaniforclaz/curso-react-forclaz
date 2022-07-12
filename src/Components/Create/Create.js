@@ -3,9 +3,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Row, Container, Col } from "react-bootstrap"
 import { db } from "../../Firebase/Config"
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../Firebase/Config"
-
 
 export const Create = () => {
 
@@ -24,9 +23,11 @@ export const Create = () => {
     const [progress, setProgress] = useState(0)
 
     const formHandler = (e) => {
+
         e.preventDefault();
         const file = e.target[0].files[0];
         uploadFiles(file);
+
     };
 
     const store = async (e) => {
@@ -44,10 +45,13 @@ export const Create = () => {
         })
 
         navigate('/catalogo')
+
     }
 
     const uploadFiles = (file) => {
+
         if (!file) return;
+
         const storageRef = ref(storage, `/files/${file.name}`)
         const uploadTask = uploadBytesResumable(storageRef, file)
 
@@ -56,18 +60,24 @@ export const Create = () => {
                 (snapshot.bytesTransferred / snapshot.totalBytes * 100)
             )
             setProgress(prog)
-        }, (err) => console.log(err),
+        }, (err) => window.location.reload(),
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => setImg(url))
             })
+
     }
 
     return (
         <Container>
+
             <Row>
+
                 <Col>
+
                     <h3>Crear</h3>
+
                     <form onSubmit={store}>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Nombre</span>
                             <input
@@ -77,6 +87,7 @@ export const Create = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Descripcion</span>
                             <input
@@ -86,6 +97,7 @@ export const Create = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <label className="input-group-text">Categoria</label>
                             <select onChange={(e) => setCat(e.target.value)} className="form-select text-uppercase">
@@ -97,6 +109,7 @@ export const Create = () => {
                                 <option value={"bandolera"}>bandolera</option>
                             </select>
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Stock</span>
                             <input
@@ -106,6 +119,7 @@ export const Create = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Precio</span>
                             <input
@@ -115,6 +129,7 @@ export const Create = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <label className="input-group-text">Nuevo</label>
                             <select onChange={(e) => setNuevo(e.target.value)} className="form-select text-uppercase">
@@ -122,6 +137,7 @@ export const Create = () => {
                                 <option value={true}>Si</option>
                             </select>
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Imagen</span>
                             <input
@@ -131,17 +147,25 @@ export const Create = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <button type="submit" className="btn btn-primary">submit</button>
+
                     </form>
+
                     <form className="mt-3" onSubmit={formHandler}>
+
                         <div className="input-group mb-3 border">
-                            <label className="input-group-text" for="inputGroupFile01">Imagen %{progress}</label>
+                            <label className="input-group-text">Imagen %{progress}</label>
                             <input type="file" className="form-control" />
                             <button type="submit" className="btn btn-info">Subir foto</button>
                         </div>
+
                     </form>
+
                 </Col>
+
             </Row>
+
         </Container>
 
     )

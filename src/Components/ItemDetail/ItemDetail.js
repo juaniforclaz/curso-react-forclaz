@@ -24,20 +24,30 @@ export const ItemDetail = ({ item }) => {
 
     }
 
-
     return (
+
         <Container className="vh-100">
+
             <Row>
+
                 <BreadCrumb
                     producto={item.title}
                 />
+
             </Row>
+
             <Row className="mx-auto">
+
                 <Col className="bg-light p-2" xs lg="4">
-                    <Card.Img src={item.img} className="img-itemdetail border border-1"></Card.Img>
+
+                    <Card.Img src={item.img} className="img-itemdetail border border-1" alt={item.title}></Card.Img>
+
                 </Col>
+
                 <Col className="bg-light p-2" xs lg="8">
+
                     <Card>
+
                         <Card.Body>
                             <Card.Title>{item.title}</Card.Title>
                             <Card.Text>${item.price}</Card.Text>
@@ -48,6 +58,7 @@ export const ItemDetail = ({ item }) => {
                             }
 
                         </Card.Body>
+
                     </Card >
 
                     {

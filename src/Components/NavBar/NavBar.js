@@ -11,15 +11,17 @@ export const NavBar = () => {
     return (
 
         <Navbar expand='lg' className='mx-3 py-2'>
-            <Navbar.Brand><Link to={'/'}><img src={Imagenes.logo} className="logo" alt='sofra bags'></img></Link></Navbar.Brand>
+
+            <Navbar.Brand><Link to={'/'}><img src={Imagenes.logo} className="logo" alt='sofra bags' /></Link></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
+
                 <Nav className="me-auto fs-5">
+
                     <Link to={'/'} className="nav-link d-flex align-items-center mx-3">Inicio</Link>
                     <Link to={'/catalogo'} className="nav-link d-flex align-items-center mx-3">Catalogo</Link>
-                    <Link to={'/nosotros'} className="nav-link d-flex align-items-center mx-3">Nosotros</Link>
                     <Link to={'/contacto'} className="nav-link d-flex align-items-center mx-3">Contacto</Link>
-                    
+
 
                     {
                         auth.loggedIn
@@ -32,8 +34,11 @@ export const NavBar = () => {
                     }
 
                     <CartWidget />
+
                 </Nav>
+
             </Navbar.Collapse>
+
         </Navbar >
 
     )

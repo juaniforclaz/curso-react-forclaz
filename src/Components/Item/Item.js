@@ -1,9 +1,8 @@
 import { Badge, Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { ItemCount } from "../ItemCount/ItemCount"
 import { Link } from "react-router-dom";
 import { useAuthContext } from '../../Context/AuthContext';
-import { addDoc, collection, deleteDoc, doc } from "firebase/firestore"
+import { collection, deleteDoc, doc } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
@@ -19,12 +18,15 @@ export const Item = ({ item }) => {
     const productosRef = collection(db, "productos")
 
     const deleteProduct = async (id) => {
+
         const productDoc = doc(db, "productos", id)
         await deleteDoc(productDoc)
         navigate('/catalogo')
+
     }
 
     const confirmDelete = (id) => {
+
         MySwal.fire({
             title: '¿Eliminar el producto?',
             text: "No hay vuelta atras",
@@ -44,13 +46,17 @@ export const Item = ({ item }) => {
                 )
             }
         })
+
     }
 
     return (
+
         <Card className="mx-auto mb-3 card-item">
+
             <Card.Body className="col">
+
                 <Badge className="position-absolute top-0 start-100 translate-middle p-1" bg="danger">{item.nuevo ? 'Nuevo' : ''}</Badge>
-                <Card.Img src={item.img} className="mb-3 img-item"></Card.Img>
+                <Card.Img src={item.img} className="mb-3 img-item" alt={item.title}></Card.Img>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>${item.price}</Card.Text>
 
@@ -67,7 +73,9 @@ export const Item = ({ item }) => {
                 <Link to={`/item/${item.id}`}>
                     <Button variant="success" className="mt-3">Ver más</Button>
                 </Link>
+
             </Card.Body>
+
         </Card >
     )
 }

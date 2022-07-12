@@ -1,8 +1,5 @@
-import { ItemList } from "../ItemList/ItemList"
-import { NewItems } from "../NewItems/NewItems"
-import { Col, Container, Row } from "react-bootstrap"
-import { useProductos } from "../ItemListContainer/useProductos"
-import { collection, doc, getDocs, query, where } from "firebase/firestore"
+import { Container, Row } from "react-bootstrap"
+import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
@@ -38,18 +35,26 @@ export const FirstCat = () => {
             .finally(() => {
                 setLoading(false)
             })
+
     }, [categoryId])
 
     return (
+
         <Container className="mt-5">
+
             <h3 className="text-center p-3">{FirstCat}S</h3>
+
             <Row>
+
                 {
                     loading
                         ? <ItemLoading />
                         : items.map((item) => < Item key={item.id} item={item} />)
                 }
+
             </Row>
+
         </Container>
+
     )
 }

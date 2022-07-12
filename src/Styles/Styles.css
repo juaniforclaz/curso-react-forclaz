@@ -12354,6 +12354,13 @@ body {
   width: 100%;
 }
 
+.img-carousel {
+  height: 45vh;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .card-item {
   -webkit-transition: all .4s;
   transition: all .4s;
@@ -12365,12 +12372,7 @@ body {
 }
 
 .carousel {
-  height: 85vh;
-}
-
-.img-carousel {
-  height: 85vh;
-  width: 100%;
+  height: 45vh;
 }
 
 .item-loading {

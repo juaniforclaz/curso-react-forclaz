@@ -1,21 +1,22 @@
 import { Breadcrumb } from "react-bootstrap"
-import { useNavigate, useParams } from "react-router-dom"
-
+import { useNavigate } from "react-router-dom"
 
 export const BreadCrumb = (props) => {
 
     const navigate = useNavigate()
 
-    const handleVolver1 = () => {
+    const handleVolver = () => {
         navigate(-1)
     }
 
     return (
+
         <Breadcrumb>
 
-            <Breadcrumb.Item onClick={handleVolver1}>Volver</Breadcrumb.Item>
-            <Breadcrumb.Item onClick={handleVolver1}>{props.producto}</Breadcrumb.Item>
+            <p className="breadcrumb-item" onClick={handleVolver}>Volver</p>
+            <p className='breadcrumb-item active'>{props.producto}</p>
 
         </Breadcrumb>
+
     )
 }

@@ -1,12 +1,14 @@
 import { doc, updateDoc, getDoc } from "firebase/firestore"
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../../Firebase/Config"
 import { useEffect } from "react"
-import { addDoc, collection } from "firebase/firestore"
 import { storage } from "../../Firebase/Config"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const MySwal = withReactContent(Swal)
 
 export const Edit = () => {
 
@@ -20,11 +22,12 @@ export const Edit = () => {
 
     const navigate = useNavigate()
 
-    const { id } = useParams()
+    const { itemId } = useParams()
 
     const [progress, setProgress] = useState(0)
 
     const update = async (e) => {
+
         e.preventDefault()
         const product = doc(db, "productos", id)
         const data = {
@@ -38,12 +41,13 @@ export const Edit = () => {
         }
         await updateDoc(product, data)
         navigate('/catalogo')
+
     }
 
     const getProductById = async (id) => {
+
         const product = await getDoc(doc(db, "productos", id))
         if (product.exists()) {
-            console.log(product.data())
             setDesc(product.data().desc)
             setStock(product.data().stock)
             setTitle(product.data().title)
@@ -52,23 +56,31 @@ export const Edit = () => {
             setImg(product.data().img)
             setCat(product.data().categoria)
         } else {
-            console.log('El producto no existe')
+            MySwal.fire({
+                title: 'Alerta',
+                text: 'El producto no existe',
+                icon: 'warning'
+            })
         }
+
     }
 
     useEffect(() => {
-        getProductById(id)
-        // eslint-disable-next-line
+        getProductById(itemId)
     }, [])
 
     const formHandler = (e) => {
+
         e.preventDefault();
         const file = e.target[0].files[0];
         uploadFiles(file);
+
     };
 
     const uploadFiles = (file) => {
+
         if (!file) return;
+
         const storageRef = ref(storage, `/files/${file.name}`)
         const uploadTask = uploadBytesResumable(storageRef, file)
 
@@ -77,20 +89,25 @@ export const Edit = () => {
                 (snapshot.bytesTransferred / snapshot.totalBytes * 100)
             )
             setProgress(prog)
-        }, (err) => console.log(err),
+        }, (err) => window.location.reload(),
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((url) => setImg(url))
             })
+
     }
 
     return (
+
         <div className='container'>
+
             <div className='row'>
+
                 <div className='col'>
 
                     <h1>Editar</h1>
 
                     <form onSubmit={update} className='text-uppercase'>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Nombre</span>
                             <input
@@ -100,6 +117,7 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Descripcion</span>
                             <input
@@ -109,6 +127,7 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <label className="input-group-text ">Categoria</label>
                             <select onChange={(e) => setCat(e.target.value)} className="form-select text-uppercase">
@@ -120,6 +139,7 @@ export const Edit = () => {
                                 <option value={"bandolera"}>bandolera</option>
                             </select>
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Stock</span>
                             <input
@@ -129,6 +149,7 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Precio</span>
                             <input
@@ -138,6 +159,7 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <div className="input-group mb-3 border">
                             <label className="input-group-text">Nuevo</label>
                             <select onChange={(e) => setNuevo(e.target.value)} className="form-select text-uppercase">
@@ -146,6 +168,7 @@ export const Edit = () => {
                                 <option value={"false"}>no</option>
                             </select>
                         </div>
+
                         <div className="input-group mb-3 border">
                             <span className="input-group-text">Imagen</span>
                             <input
@@ -155,17 +178,25 @@ export const Edit = () => {
                                 className="form-control"
                             />
                         </div>
+
                         <button type='submit' className='btn btn-primary'>Update</button>
+
                     </form>
+
                     <form className="mt-3" onSubmit={formHandler}>
+
                         <div className="input-group mb-3 border">
                             <label className="input-group-text">Imagen %{progress}</label>
                             <input type="file" className="form-control" />
                             <button type="submit" className="btn btn-info">Subir foto</button>
                         </div>
+
                     </form>
+
                 </div>
+
             </div>
+
         </div>
     )
 }

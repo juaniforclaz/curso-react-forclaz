@@ -7,6 +7,7 @@ export const ItemListContainer = () => {
     const { items, loading } = useProductos()
 
     return (
+
         <section>
 
             {
@@ -17,5 +18,6 @@ export const ItemListContainer = () => {
             }
 
         </section >
+        
     )
 }

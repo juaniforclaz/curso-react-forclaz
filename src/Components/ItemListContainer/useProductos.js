@@ -30,10 +30,13 @@ export const useProductos = () => {
             .finally(() => {
                 setLoading(false)
             })
+
     }, [categoryId])
 
     return {
+
         items, loading
+
     }
 
 }

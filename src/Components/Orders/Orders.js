@@ -1,8 +1,7 @@
 import { Container, Col, Row, Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-import { getDocs, collection, where, query, doc, deleteDoc } from 'firebase/firestore'
+import { getDocs, collection, doc, deleteDoc } from 'firebase/firestore'
 import { db } from '../../Firebase/Config'
-import { Badge } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -34,12 +33,15 @@ export const Orders = () => {
     const navigate = useNavigate()
 
     const deleteProduct = async (id) => {
+
         const orderDoc = doc(db, "orders", id)
         await deleteDoc(orderDoc)
         navigate('/')
+
     }
 
     const confirmDelete = (id) => {
+
         MySwal.fire({
             title: '¿Eliminar el producto?',
             text: "No hay vuelta atras",
@@ -50,7 +52,6 @@ export const Orders = () => {
             confirmButtonText: 'Eliminar'
         }).then((result) => {
             if (result.isConfirmed) {
-                //llamamos a la fcion para eliminar   
                 deleteProduct(id)
                 Swal.fire(
                     'Eliminado',
@@ -59,65 +60,90 @@ export const Orders = () => {
                 )
             }
         })
+
     }
 
     return (
+
         <Container>
+
             <p className='fs-2'>Ordenes</p>
 
             {
+
                 orders.map((orders) =>
+
                     <div>
-                        <Row className='bg-light mb-2 p-3' key={orders.id}>
+
+                        <Row className='bg-light mb-2 p-3'>
+
                             <Col className=''>
+
                                 <div className='d-flex'>
                                     <p className='border-bottom border-2'>Id:</p>
                                     <span className='mx-2'>{orders.id}</span>
                                 </div>
+
                                 <div className='d-flex'>
                                     <p className='border-bottom border-2'>Nombre:</p>
                                     <span className='mx-2'>{orders.buyer.nombre}</span>
                                 </div>
+
                                 <div className='d-flex'>
                                     <p className='border-bottom border-2'>Email:</p>
                                     <span className='mx-2'>{orders.buyer.email}</span>
                                 </div>
+
                                 <div className='d-flex'>
                                     <p className='border-bottom border-2'>Direccion:</p>
                                     <span className='mx-2'>{orders.buyer.direccion}</span>
                                 </div>
+
                             </Col>
+
                             <Col className=''>
-                                {orders.items.map(product => (
-                                    <div className=''>
-                                        <div className='d-flex'>
-                                            <p className='border-bottom border-2'>Nombre:</p>
-                                            <span className='mx-2'>{product.title}</span>
+
+                                {
+
+                                    orders.items.map(product => (
+                                        <div className=''>
+                                            <div className='d-flex'>
+                                                <p className='border-bottom border-2'>Nombre:</p>
+                                                <span className='mx-2'>{product.title}</span>
+                                            </div>
+                                            <div className='d-flex'>
+                                                <p className='border-bottom border-2'>cantidad:</p>
+                                                <span className='mx-2'>{product.cantidad}</span>
+                                            </div>
+                                            <div className='d-flex'>
+                                                <p className='border-bottom border-2'>Precio:</p>
+                                                <span className='mx-2'>$ {product.price}</span>
+                                            </div>
                                         </div>
-                                        <div className='d-flex'>
-                                            <p className='border-bottom border-2'>cantidad:</p>
-                                            <span className='mx-2'>{product.cantidad}</span>
-                                        </div>
-                                        <div className='d-flex'>
-                                            <p className='border-bottom border-2'>Precio:</p>
-                                            <span className='mx-2'>$ {product.price}</span>
-                                        </div>
-                                    </div>
-                                ))}
+                                    ))
+
+                                }
+
                                 <div className='d-flex'>
                                     <p className='border-bottom border-2'>Precio total:</p>
                                     <span className='mx-2'>$ {orders.total}</span>
                                 </div>
+
                                 <Row className='text-end'>
+
                                     <Col>
                                         <Button variant='success' onClick={() => { confirmDelete(orders.id) }}>Listo</Button>
                                     </Col>
+
                                 </Row>
+
                             </Col>
+
                         </Row>
 
                     </div>
                 )
+
             }
 
         </Container >

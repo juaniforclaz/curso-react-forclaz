@@ -1,5 +1,10 @@
 # PROYECTO FINAL REACT JUAN IGNACIO FORCLAZ FORCLAZ
 ***
+## INDICE
+1. [INFORMACION GENERAL](#INFORMACION-GENERAL)
+2. [LIBRERIAS / DEPENDENCIAS UTILIZADAS](#LIBRERIAS-/-DEPENDENCIAS-UTILIZADAS)
+### INFORMACION GENERAL
+***
 ## SOFRA BAGS
 ***
 El proyecto es un e-commerce sobre un emprendimiento de carteras, bolsos, mochilas, y demas productos relacionados, hechos a mano. 
@@ -18,7 +23,7 @@ El sitio consta de 3 secciones o paginas, en primer lugar, el inicio posee un ca
 * [SWEETALERT2](https://sweetalert2.github.io/recipe-gallery/sweetalert2-react.html)
 
 ## VIDEO NAVEGACION
-![Video text]('')
+![Video text]('https://www.united-internet.de/fileadmin/user_upload/Brands/Downloads/Logo_IONOS_by.jpg')
 
 To do:
 - Estetica

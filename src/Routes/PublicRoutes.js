@@ -1,7 +1,6 @@
 import { NavBar } from '../Components/NavBar/NavBar';
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LoginScreen } from '../Components/LoginScreen/LoginScreen';
-import { Nosotros } from '../Components/Nosotros/Nosotros';
 import { Contacto } from '../Components/Contacto/Contacto';
 import { Catalogo } from '../Components/Catalogo/Catalogo';
 import { Inicio } from '../Components/Inicio/Inicio';
@@ -15,13 +14,14 @@ import { Cart } from '../Components/Cart/Cart';
 export const PublicRoutes = () => {
 
     return (
+
         <>
+
             <NavBar />
 
             <Routes>
                 <Route path='/' element={<Inicio />} />
                 <Route path='/catalogo' element={<Catalogo />} />
-                <Route path='/nosotros' element={<Nosotros />} />
                 <Route path='/contacto' element={<Contacto />} />
                 <Route path='/item/:itemId' element={<ItemDetailContainer />} />
                 <Route path='/categoria/:categoryId' element={<ItemListContainer />} />
@@ -35,5 +35,6 @@ export const PublicRoutes = () => {
             <Footer />
 
         </>
+        
     )
 }

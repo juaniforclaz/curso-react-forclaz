@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react"
-import { Item } from "../Item/Item"
-import { ItemList } from "../ItemList/ItemList"
-import { Container, Row, Col } from "react-bootstrap"
 import { ItemLoading } from "../ItemLoading/ItemLoading"
 import { useParams } from "react-router-dom"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
@@ -33,6 +30,7 @@ export const ItemDetailContainer = () => {
     }, [])
 
     return (
+
         <section className="container my-3 vh-100">
 
             {
@@ -42,5 +40,6 @@ export const ItemDetailContainer = () => {
             }
 
         </section>
+        
     )
 }
