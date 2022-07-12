@@ -15,6 +15,8 @@ export const Item = ({ item }) => {
 
     const { auth } = useAuthContext()
 
+    // Logica para eliminar producto desde el admin
+
     const deleteProduct = async (id) => {
 
         const productDoc = doc(db, "productos", id)
@@ -35,7 +37,7 @@ export const Item = ({ item }) => {
             confirmButtonText: 'Eliminar'
         }).then((result) => {
             if (result.isConfirmed) {
-                //llamamos a la fcion para eliminar   
+                //Llamado a la fcion para eliminar   
                 deleteProduct(id)
                 Swal.fire(
                     'Eliminado',
