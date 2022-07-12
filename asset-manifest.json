@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/curso-react-forclaz/static/css/main.159d6398.css",
+    "main.js": "/curso-react-forclaz/static/js/main.41048c3e.js",
+    "static/js/787.534847d2.chunk.js": "/curso-react-forclaz/static/js/787.534847d2.chunk.js",
+    "static/media/3.png": "/curso-react-forclaz/static/media/3.16c8eca11bac8a542fe0.png",
+    "static/media/1.png": "/curso-react-forclaz/static/media/1.ba6eacdfbadf49cbbf78.png",
+    "static/media/2.png": "/curso-react-forclaz/static/media/2.7feb81621a7113465724.png",
+    "static/media/sorteo.jpg": "/curso-react-forclaz/static/media/sorteo.f4581958ef587064e116.jpg",
+    "index.html": "/curso-react-forclaz/index.html",
+    "main.159d6398.css.map": "/curso-react-forclaz/static/css/main.159d6398.css.map",
+    "main.41048c3e.js.map": "/curso-react-forclaz/static/js/main.41048c3e.js.map",
+    "787.534847d2.chunk.js.map": "/curso-react-forclaz/static/js/787.534847d2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.159d6398.css",
+    "static/js/main.41048c3e.js"
+  ]
+}
