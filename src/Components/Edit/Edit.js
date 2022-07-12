@@ -22,7 +22,7 @@ export const Edit = () => {
 
     const navigate = useNavigate()
 
-    const { itemId } = useParams()
+    const { id } = useParams()
 
     const [progress, setProgress] = useState(0)
 
@@ -66,7 +66,7 @@ export const Edit = () => {
     }
 
     useEffect(() => {
-        getProductById(itemId)
+        getProductById(id)
     }, [])
 
     const formHandler = (e) => {

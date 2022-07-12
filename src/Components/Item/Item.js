@@ -2,7 +2,7 @@ import { Badge, Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAuthContext } from '../../Context/AuthContext';
-import { collection, deleteDoc, doc } from "firebase/firestore"
+import { deleteDoc, doc } from "firebase/firestore"
 import { db } from "../../Firebase/Config"
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
@@ -14,8 +14,6 @@ export const Item = ({ item }) => {
     const navigate = useNavigate()
 
     const { auth } = useAuthContext()
-
-    const productosRef = collection(db, "productos")
 
     const deleteProduct = async (id) => {
 

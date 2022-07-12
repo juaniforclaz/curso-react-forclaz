@@ -14,10 +14,6 @@ export const Hero = () => {
                     src={Imagenes.car1}
                     alt="First slide"
                 />
-                <Carousel.Caption>
-                    <h3></h3>
-                    <p></p>
-                </Carousel.Caption>
 
             </Carousel.Item>
 
@@ -29,11 +25,6 @@ export const Hero = () => {
                     alt="Second slide"
                 />
 
-                <Carousel.Caption>
-                    <h3></h3>
-                    <p></p>
-                </Carousel.Caption>
-
             </Carousel.Item>
 
             <Carousel.Item>
@@ -43,11 +34,6 @@ export const Hero = () => {
                     src={Imagenes.car3}
                     alt="Third slide"
                 />
-
-                <Carousel.Caption>
-                    <h3></h3>
-                    <p></p>
-                </Carousel.Caption>
 
             </Carousel.Item>
 

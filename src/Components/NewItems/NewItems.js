@@ -8,13 +8,10 @@ import { useEffect, useState } from "react"
 export const NewItems = () => {
 
     const [items, setItems] = useState([])
-    const [loading, setLoading] = useState(true)
 
     const { categoryId } = useParams()
 
     useEffect(() => {
-
-        setLoading(true)
 
         const productosRef = collection(db, "productos")
         const q = query(productosRef, where("nuevo", "==", "true"))
@@ -28,9 +25,6 @@ export const NewItems = () => {
                     }
                 })
                 setItems(newItems)
-            })
-            .finally(() => {
-                setLoading(false)
             })
     }, [categoryId])
 

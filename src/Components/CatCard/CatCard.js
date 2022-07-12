@@ -6,7 +6,7 @@ export const CatCard = (props) => {
     return (
 
         <div className="bg-light border border-1 p-4 rounded text-white my-2">
-            <img src={props.srce} className="img-cat-card rounded"></img>
+            <img src={props.srce} className="img-cat-card rounded" alt={props.title}></img>
             <h4 className="mt-2 text-dark">{props.title}</h4>
             <h6 className="text-dark">{props.subtitle}</h6>
             <Link to={`/categoria/${props.cat}`}>

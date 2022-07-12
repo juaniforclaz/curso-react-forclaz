@@ -43,7 +43,7 @@ export const Orders = () => {
     const confirmDelete = (id) => {
 
         MySwal.fire({
-            title: '¿Eliminar el producto?',
+            title: '¿Eliminar la orden?',
             text: "No hay vuelta atras",
             icon: 'warning',
             showCancelButton: true,

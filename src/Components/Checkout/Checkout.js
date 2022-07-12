@@ -81,9 +81,9 @@ export const Checkout = () => {
                 <p>Su número de orden es: {orderId}</p>
                 <p className="text-danger">IMPORTANTE: Guardá tu numero de orden porque te lo pediremos a la hora de entregar el pedido</p>
                 <p className="text-primary">nos pondremos en contacto cuando tengamos todo listo!</p>
-                <Link to={'/'}><Button>Ir al nicio</Button></Link>
-                <Link to={'/catalogo'} className="mx-3"><Button variant="success">Ver mas productos</Button></Link>
-                <Link to={'/contacto'}><Button variant="cyan">Contacta con nosotros</Button></Link>
+                <Link to={'/'} className="m-2"><Button>Ir al nicio</Button></Link>
+                <Link to={'/catalogo'} className="m-2"><Button variant="success">Ver mas productos</Button></Link>
+                <Link to={'/contacto'} className="m-2"><Button variant="cyan">Contacta con nosotros</Button></Link>
             </div>
 
         )

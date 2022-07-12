@@ -22,7 +22,7 @@ export const Footer = () => {
                     </div>
                     <p className="fs-1">
                         <span className="mx-2">
-                            <a href='https://www.instagram.com/sofra.ok/?igshid=YmMyMTA2M2Y%3D' className='text-decoration-none' target={"_blank"}>{Items.instagram}</a>
+                            <a href='https://www.instagram.com/sofra.ok/?igshid=YmMyMTA2M2Y%3D' className='text-decoration-none'>{Items.instagram}</a>
                         </span>
                         <span className="mx-2">
                             <a className="text-decoration-none" href="whatsapp://send?text=Hola! queria consultar por un modelo de la tienda online! &phone=+5491165557922">{Items.whatsapp}</a>

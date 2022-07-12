@@ -12348,10 +12348,10 @@ body {
 }
 
 .img-modal {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 50vh;
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .img-carousel {
@@ -12359,6 +12359,13 @@ body {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .img-carousel {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }
 
 .card-item {
